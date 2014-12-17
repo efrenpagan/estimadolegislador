@@ -30,4 +30,6 @@ gem 'spring',      group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'angular-rails-templates', '0.1.3'
+gem 'mechanize', '2.7.3'
+gem 'unicode_utils', '1.4.0'
 
