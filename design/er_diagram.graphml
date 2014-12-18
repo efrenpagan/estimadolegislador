@@ -15,10 +15,9 @@
   <graph edgedefault="directed" id="G">
     <data key="d7"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="80.0" width="182.0" x="-16.0" y="110.0"/>
+          <y:Geometry height="80.0" width="182.0" x="9.0" y="110.0"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="61.017578125" x="60.4912109375" y="4.0">Legislator</y:NodeLabel>
@@ -38,15 +37,14 @@ role (senator, representative)<y:LabelModel>
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="80.0" width="167.0" x="216.5" y="110.0"/>
+          <y:Geometry height="80.0" width="192.0" x="229.0" y="110.0"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="47.9921875" x="59.50390625" y="4.0">Senator</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" modelName="custom" textColor="#000000" visible="true" width="163.45703125" x="2.0" y="30.1328125">legislator_id
-type (distrito, acumulación)
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="47.9921875" x="72.00390625" y="4.0">Senator</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" modelName="custom" textColor="#000000" visible="true" width="188.44140625" x="2.0" y="30.1328125">legislator_id
+category (distrito, acumulación)
 district_id<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
@@ -61,15 +59,14 @@ district_id<y:LabelModel>
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="80.0" width="167.0" x="-8.5" y="-15.0"/>
+          <y:Geometry height="80.0" width="200.0" x="0.0" y="-15.0"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="89.640625" x="38.6796875" y="4.0">Representative</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" modelName="custom" textColor="#000000" visible="true" width="163.45703125" x="2.0" y="30.1328125">legislator_id
-type (distrito, acumulación)
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="89.640625" x="55.1796875" y="4.0">Representative</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" modelName="custom" textColor="#000000" visible="true" width="188.44140625" x="2.0" y="30.1328125">legislator_id
+category (distrito, acumulación)
 district_id<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
@@ -84,10 +81,9 @@ district_id<y:LabelModel>
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="53.0" width="154.0" x="223.0" y="-1.5"/>
+          <y:Geometry height="53.0" width="154.0" x="248.0" y="-1.5"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.1328125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="46.076171875" x="53.9619140625" y="4.0">District</y:NodeLabel>
@@ -105,10 +101,9 @@ district_id<y:LabelModel>
       </data>
     </node>
     <edge id="e0" source="n1" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-83.5" sy="0.0" tx="91.0" ty="0.0"/>
+          <y:Path sx="-96.0" sy="0.0" tx="91.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="crows_foot_one_optional" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -116,7 +111,6 @@ district_id<y:LabelModel>
       </data>
     </edge>
     <edge id="e1" source="n2" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="40.0" tx="0.0" ty="-40.0"/>
@@ -127,10 +121,9 @@ district_id<y:LabelModel>
       </data>
     </edge>
     <edge id="e2" source="n2" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="100.0" sy="0.0" tx="-77.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="crows_foot_many" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -138,10 +131,9 @@ district_id<y:LabelModel>
       </data>
     </edge>
     <edge id="e3" source="n1" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="-40.0" tx="0.0" ty="26.5"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="crows_foot_many" target="none"/>
           <y:BendStyle smoothed="false"/>

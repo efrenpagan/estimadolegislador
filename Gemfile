@@ -32,4 +32,5 @@ gem 'spring',      group: :development
 gem 'angular-rails-templates', '0.1.3'
 gem 'mechanize', '2.7.3'
 gem 'unicode_utils', '1.4.0'
-
+gem 'rabl', '0.11.5'
+gem 'oj', '2.11.1'

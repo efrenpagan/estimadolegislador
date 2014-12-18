@@ -5,6 +5,7 @@ class LegislatorsController < ApplicationController
   # GET /legislators.json
   def index
     @legislators = Legislator.all
+    render 'legislators/index'
   end
 
   # GET /legislators/1
