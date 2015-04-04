@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 
-  email: 
-  role: 1
+  name: MyString
+  branch: MyString
+  email: MyString
+  position: MyString
+  district: MyString
 
 two:
-  name: 
-  email: 
-  role: 1
+  name: MyString
+  branch: MyString
+  email: MyString
+  position: MyString
+  district: MyString
