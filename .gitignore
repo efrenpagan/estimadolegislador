@@ -19,3 +19,6 @@
 
 # Ignore bower components. Run 'bower install' when deploying
 /vendor/assets/bower_components
+
+# Ignore application configuration
+/config/application.yml

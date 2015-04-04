@@ -20,5 +20,22 @@ module Estimadolegislador
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.paths << Rails.root.join('app', 'assets', 'bower_components')
+
+    Global.configure do |config|
+      config.environment = Rails.env.to_s
+      config.config_directory = Rails.root.join('config/global').to_s
+    end
+
+    if Global.file_uploads.aws_s3.enabled
+      config.paperclip_defaults = {
+        :storage => :s3,
+        :s3_credentials => {
+          :bucket => ENV['s3_bucket'],
+          :access_key_id => ENV['s3_access_key_id'],
+          :secret_access_key => ENV['s3_secret_access_key']
+        }
+      }
+    end
+
   end
 end
