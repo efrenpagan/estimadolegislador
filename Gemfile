@@ -29,12 +29,13 @@ gem 'spring',      group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'angular-rails-templates', '0.1.3'
-gem 'mechanize', '2.7.3'
-gem 'unicode_utils', '1.4.0'
-gem 'rabl', '0.11.5'
-gem 'oj', '2.11.1'
-gem 'paperclip', '4.2.1'
-gem 'aws-sdk', '1.10.0'
-gem 'global', '0.1.2'
-gem "figaro", '1.1.0'
+gem 'angular-rails-templates',	'0.1.3'
+gem 'mechanize', 								'2.7.3'
+gem 'unicode_utils', 						'1.4.0'
+gem 'rabl', 										'0.11.5'
+gem 'oj', 											'2.11.1'
+gem 'paperclip', 								'4.2.1'
+gem 'aws-sdk', 									'1.10.0'
+gem 'global', 									'0.1.2'
+gem "figaro", 									'1.1.0'
+gem 'angular_rails_csrf',				'1.0.3'
