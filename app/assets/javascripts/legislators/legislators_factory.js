@@ -9,7 +9,7 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 		$http.get('/legislators.json').
 		success(function(data){
 			angular.copy(data, o.legislators);
-	    deferred.resolve();
+	    deferred.resolve(data);
 		}).
 		error(function(data, status, headers, config) {
 	    deferred.reject();
@@ -21,8 +21,9 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 		var deferred = $q.defer();
 		$http.get('/legislators/'+id+'.json').
 		success(function(data){
+			data.image_preview = data.image;
 			angular.copy(data, o.legislator);
-	    deferred.resolve();
+	    deferred.resolve(data);
 		}).
 		error(function(data, status, headers, config) {
 	    deferred.reject();
@@ -46,6 +47,32 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
     .error(function (data, status, headers, config) {
 			deferred.reject(status);
 		})
+    return deferred.promise;
+	};
+
+	o.create = function(params){
+		var deferred = $q.defer();
+		$upload.upload({
+      url: '/legislators.json',
+      method: 'POST',
+      fields: LegislatorsService.params('legislator', params),
+      file: params.image,
+      fileFormDataName: 'legislator[image]'
+    }).
+    success(function (data, status, headers, config) {
+    	angular.copy(data, o.legislator);
+      deferred.resolve(data);
+    })
+    .error(function (data, status, headers, config) {
+			deferred.reject(status);
+		})
+    return deferred.promise;
+	};
+
+	o.reset = function(){
+		var deferred = $q.defer();
+    angular.copy({}, o.legislator);
+    deferred.resolve({});
     return deferred.promise;
 	};
 

@@ -20,6 +20,15 @@ app.config([
 					}]
 				}
 			})
+			.state('legislators.new', {
+				url: '/new',
+				templateUrl: 'legislators/_new.html',
+				resolve: {
+					init: ['legislatorsFactory', function(legislatorsFactory){
+						return legislatorsFactory.reset();
+					}]
+				}
+			})
 			.state('legislators.edit', {
 				url: '/:id/edit',
 				templateUrl: 'legislators/_edit.html',
