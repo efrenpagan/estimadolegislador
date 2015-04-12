@@ -5,4 +5,6 @@
 //= require angular_app
 //= require jquery
 //= require bootstrap
+//= require ngquill-custom
+//= require quill
 //= require_tree .

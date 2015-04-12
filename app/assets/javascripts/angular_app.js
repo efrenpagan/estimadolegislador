@@ -1,4 +1,4 @@
-var app = angular.module('estimadoLegislador', ['ui.router', 'templates', 'angularFileUpload'])
+var app = angular.module('estimadoLegislador', ['ui.router', 'templates', 'angularFileUpload', 'ngQuill'])
 
 app.config([
 	'$stateProvider',
@@ -35,6 +35,16 @@ app.config([
 				resolve: {
 					init: ['$stateParams', 'legislatorsFactory', function($stateParams, legislatorsFactory){
 						return legislatorsFactory.find($stateParams.id);
+					}]
+				}
+			})
+			.state('legislators.new_email', {
+				url: '/:id/new_email',
+				templateUrl: 'emails/_new_email.html',
+				controller: 'EmailsController',
+				resolve: {
+					init: ['$stateParams', 'emailsFactory', function($stateParams, emailsFactory){
+						return emailsFactory.newEmail($stateParams.id);
 					}]
 				}
 			});

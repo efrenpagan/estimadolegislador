@@ -1,5 +1,7 @@
 /*
  *= require bootstrap/dist/css/bootstrap
+ *= require font-awesome/css/font-awesome
+ *= require quill/dist/quill.snow
  *= require_tree .
  *= require_self
  */
@@ -16,3 +18,25 @@
 .img-container{
 	width: 200px;
 }
+
+.ql-container{
+	height: 250px !important;
+}
+
+.advanced-wrapper{
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+.ql-toolbar{
+	border-bottom: 1px solid #ccc;
+}
+
+.ql-format-group{
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+/*.ql-editor{
+	min-height: 200px;
+}*/

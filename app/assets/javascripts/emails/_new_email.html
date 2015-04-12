@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-9 col-md-offset-1">
+  	<form novalidate>
+  		<div class="form-group">
+			  <label for="name">Nombre</label>
+			  <input type="text" class="form-control" id="name" ng-model="email.from_name">
+			</div>
+			<div class="form-group">
+			  <label for="email">Email</label>
+			  <input type="email" class="form-control" id="email" ng-model="email.from_email">
+			</div>
+			<div class="form-group">
+			  <label for="subject">Asunto</label>
+			  <input type="text" class="form-control" id="subject" ng-model="email.subject">
+			</div>
+			<div class="form-group">
+			  <label for="message">Mensaje</label>
+			  <ng-quill-editor id="message" ng-model="email.message" toolbar="true" link-tooltip="true" image-tooltip="true" toolbar-entries="font size bold list bullet italic underline align color background link image" editor-required="true" required="true" error-class="input-error" theme="snow"></ng-quill-editor>
+			</div>
+			<div class="form-group">
+			  <label><input type="checkbox" ng-model="email.public">&nbsp;¿Desea hacer este mensaje público?</label>
+			</div>
+	  	<button type="submit" class="btn btn-default" ng-click="sendEmail(email)">Actualizar</button>
+		</form>
+  </div>
+</div>

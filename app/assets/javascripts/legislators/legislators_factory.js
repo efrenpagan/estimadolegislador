@@ -19,15 +19,15 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 
 	o.find = function(id){
 		var deferred = $q.defer();
-		$http.get('/legislators/'+id+'.json').
-		success(function(data){
+		LegislatorsService.find(id).
+		then(function(data){
 			data.image_preview = data.image;
 			angular.copy(data, o.legislator);
 	    deferred.resolve(data);
 		}).
-		error(function(data, status, headers, config) {
-	    deferred.reject();
-	  });
+		catch(function(data){
+			deferred.reject();
+		});
 		return deferred.promise;
 	};
 
