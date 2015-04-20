@@ -18,7 +18,7 @@
 			  <ng-quill-editor id="message" ng-model="email.message" toolbar="true" link-tooltip="true" image-tooltip="true" toolbar-entries="font size bold list bullet italic underline align color background link image" editor-required="true" required="true" error-class="input-error" theme="snow"></ng-quill-editor>
 			</div>
 			<div class="form-group">
-			  <label><input type="checkbox" ng-model="email.public">&nbsp;¿Desea hacer este mensaje público?</label>
+			  <label><input type="checkbox" ng-model="email.is_public">&nbsp;¿Desea hacer este mensaje público?</label>
 			</div>
 	  	<button type="submit" class="btn btn-default" ng-click="sendEmail(email)">Actualizar</button>
 		</form>

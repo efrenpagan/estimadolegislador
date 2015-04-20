@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150411225314) do
     t.string   "from_email"
     t.string   "subject"
     t.string   "message"
-    t.boolean  "public"
+    t.boolean  "is_public"
     t.string   "short_url"
     t.integer  "legislator_id"
     t.datetime "created_at"

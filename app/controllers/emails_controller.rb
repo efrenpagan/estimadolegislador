@@ -24,12 +24,12 @@ class EmailsController < ApplicationController
   # POST /emails
   # POST /emails.json
   def create
-    @email = Email.new(email_params)
-    if @email.save
-      LegislatorMailer.send_legislator_email(@email).deliver
-      render :show, status: :created, location: @email
+    email = Email.new(email_params)
+    if email.valid?
+      task_key = EmailLogic.send_email_async(email_params)
+      render json: { task_key: task_key }, status: :ok
     else
-      render json: @email.errors, status: :unprocessable_entity
+      render json: email.errors, status: :unprocessable_entity
     end
   end
 
@@ -65,6 +65,6 @@ class EmailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_params
-      params.require(:email).permit(:from_name, :from_email, :subject, :message, :public, :short_url, :legislator_id)
+      params.require(:email).permit(:from_name, :from_email, :subject, :message, :is_public, :short_url, :legislator_id)
     end
 end
