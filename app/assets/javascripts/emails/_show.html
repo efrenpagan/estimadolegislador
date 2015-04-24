@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-9 col-md-offset-1">
+  	<table>
+  		<tr>
+  			<td>
+          <table>
+            <tr>
+            	<td><h2>{{email.subject}}</h2></td>
+            	<td><span>{{email.created_at | amDateFormat:'MMMM D YYYY, h:mm:ss a'}}</span></td>
+            </tr>
+            <tr>
+            	<td>
+            		<div ng-bind-html="email.message"></div>
+            	</td>
+            </tr>
+          </table>
+  			</td>
+  		</tr>
+		</table>
+  </div>
+</div>

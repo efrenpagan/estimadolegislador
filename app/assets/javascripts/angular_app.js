@@ -1,4 +1,4 @@
-var app = angular.module('estimadoLegislador', ['ui.router', 'templates', 'angularFileUpload', 'ngQuill'])
+var app = angular.module('estimadoLegislador', ['ui.router', 'templates', 'angularFileUpload', 'ngQuill', 'ngSanitize', 'angularMoment'])
 
 app.config([
 	'$stateProvider',
@@ -39,15 +39,44 @@ app.config([
 				}
 			})
 			.state('legislators.new_email', {
-				url: '/:id/new_email',
-				templateUrl: 'emails/_new_email.html',
+				url: '/:legislator_id/new_email',
+				templateUrl: 'emails/_new.html',
 				controller: 'EmailsController',
 				resolve: {
 					init: ['$stateParams', 'emailsFactory', function($stateParams, emailsFactory){
-						return emailsFactory.newEmail($stateParams.id);
+						return emailsFactory.newEmail($stateParams.legislator_id);
+					}]
+				}
+			})
+			.state('emails', {
+				abstract: true,
+				url: '/emails',
+				template: '<ui-view/>',
+				controller: 'EmailsController'
+			})
+			.state('emails.index', {
+				url: '',
+				templateUrl: 'emails/_index.html',
+				resolve: {
+					init: ['emailsFactory', function(emailsFactory){
+						return emailsFactory.index();
+					}]
+				}
+			})
+			.state('emails.show', {
+				url: '/:id',
+				templateUrl: 'emails/_show.html',
+				resolve: {
+					init: ['$stateParams', 'emailsFactory', function($stateParams, emailsFactory){
+						return emailsFactory.find($stateParams.id);
 					}]
 				}
 			});
 		$urlRouterProvider.otherwise('legislators');	
 	}
 ]);
+
+// Change angularMoment locale to spanish
+app.run(function(amMoment) {
+	amMoment.changeLocale('es');
+});

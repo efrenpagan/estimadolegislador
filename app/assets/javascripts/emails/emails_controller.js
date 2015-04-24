@@ -1,9 +1,7 @@
 app.controller('EmailsController', ['$scope', '$state', 'emailsFactory',
 	function($scope, $state, emailsFactory) {
-		$scope.legislator = emailsFactory.legislator;
-		$scope.email = {
-			legislator_id: emailsFactory.legislator.id
-		};
+		$scope.emails = emailsFactory.emails;
+		$scope.email = emailsFactory.email;
 
 		$scope.sendEmail = function(email){
 			emailsFactory.sendEmail(email)

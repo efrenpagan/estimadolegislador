@@ -7,4 +7,8 @@
 //= require bootstrap
 //= require ngquill-custom
 //= require quill
+//= require moment
+//= require angular-moment
+//= require angular-sanitize
+//= require moment/locale/es
 //= require_tree .

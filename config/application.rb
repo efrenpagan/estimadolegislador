@@ -26,7 +26,7 @@ module Estimadolegislador
       config.config_directory = Rails.root.join('config/global').to_s
     end
 
-    if Global.file_uploads.aws_s3.enabled
+    if Global.config.aws_s3.enabled
       config.paperclip_defaults = {
         :storage => :s3,
         :s3_credentials => {

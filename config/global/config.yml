@@ -1,11 +1,17 @@
 development:
   aws_s3:
     enabled: false
+  sendgrid:
+    enabled: false
 
 test:
   aws_s3:
     enabled: false
+  sendgrid:
+    enabled: false
 
 production:
   aws_s3:
+    enabled: true
+  sendgrid:
     enabled: true
