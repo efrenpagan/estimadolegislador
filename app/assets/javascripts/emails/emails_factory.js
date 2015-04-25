@@ -8,7 +8,7 @@ app.factory('emailsFactory', ['$http', '$q', 'LegislatorsService', function($htt
 
 	o.index = function(){
 		var deferred = $q.defer();
-		$http.get('/emails.json').
+		$http.get('/api/emails.json').
 		success(function(data){
 			angular.copy(data, o.emails);
 	    deferred.resolve(data);
@@ -35,7 +35,7 @@ app.factory('emailsFactory', ['$http', '$q', 'LegislatorsService', function($htt
 
 	o.sendEmail = function(email){
 		var deferred = $q.defer();
-		$http.post('/emails.json', { email: email }).
+		$http.post('/api/emails.json', { email: email }).
 	  success(function(data, status, headers, config) {
 	  	console.log(data);
 	    deferred.resolve(data);
@@ -49,7 +49,7 @@ app.factory('emailsFactory', ['$http', '$q', 'LegislatorsService', function($htt
 
 	o.find = function(id){
 		var deferred = $q.defer();
-		$http.get('/emails/'+id+'.json').
+		$http.get('/api/emails/'+id+'.json').
 		success(function(data){
 			console.log(data)
 			angular.copy(data, o.email);

@@ -12,7 +12,7 @@ app.service('LegislatorsService', ['$http', '$q', function ($http, $q) {
 
   this.find = function(legislator_id){
   	var deferred = $q.defer();
-		$http.get('/legislators/'+legislator_id+'.json').
+		$http.get('/api/legislators/'+legislator_id+'.json').
 		success(function(data){
 	    deferred.resolve(data);
 		}).

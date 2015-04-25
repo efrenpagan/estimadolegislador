@@ -2,6 +2,8 @@ class Email < ActiveRecord::Base
 	belongs_to :legislator
 	validate :email_fields
 	validates_presence_of :legislator
+	after_create :create_short_url
+	default_scope { order("created_at") }
 
 	private
 
@@ -10,6 +12,10 @@ class Email < ActiveRecord::Base
 		errors.add(:from_email, 'invalid email') unless /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/.match(from_email)
 		errors.add(:subject, 'empty subject') unless subject.present?
 		errors.add(:message, 'empty message') unless message.present?
+	end
+
+	def create_short_url
+		EmailLogic.create_short_url(self)
 	end
 
 end

@@ -1,9 +1,8 @@
 var app = angular.module('estimadoLegislador', ['ui.router', 'templates', 'angularFileUpload', 'ngQuill', 'ngSanitize', 'angularMoment'])
 
-app.config([
-	'$stateProvider',
-	'$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider){
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+	function($stateProvider, $urlRouterProvider, $locationProvider){
+		$locationProvider.html5Mode(true);
 		$stateProvider
 			.state('legislators', {
 				abstract: true,

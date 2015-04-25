@@ -6,7 +6,7 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 
 	o.index = function(){
 		var deferred = $q.defer();
-		$http.get('/legislators.json').
+		$http.get('/api/legislators.json').
 		success(function(data){
 			angular.copy(data, o.legislators);
 	    deferred.resolve(data);
@@ -34,7 +34,7 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 	o.update = function(params){
 		var deferred = $q.defer();
 		$upload.upload({
-      url: '/legislators/'+params.id+'.json',
+      url: '/api/legislators/'+params.id+'.json',
       method: 'PUT',
       fields: LegislatorsService.params('legislator', params),
       file: params.image,
@@ -53,7 +53,7 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 	o.create = function(params){
 		var deferred = $q.defer();
 		$upload.upload({
-      url: '/legislators.json',
+      url: '/api/legislators.json',
       method: 'POST',
       fields: LegislatorsService.params('legislator', params),
       file: params.image,

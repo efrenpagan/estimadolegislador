@@ -3,15 +3,18 @@ development:
     enabled: false
   sendgrid:
     enabled: false
+  domain: estimadolegislador.dev
 
 test:
   aws_s3:
     enabled: false
   sendgrid:
     enabled: false
+  domain: 127.0.0.1
 
 production:
   aws_s3:
     enabled: true
   sendgrid:
     enabled: true
+  domain: estimadolegislador.org

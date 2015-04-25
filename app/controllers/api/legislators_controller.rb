@@ -1,4 +1,4 @@
-class LegislatorsController < ApplicationController
+class Api::LegislatorsController < ApplicationController
 	before_action :set_legislator, only: [:show, :edit, :update, :destroy]
 
 	def index
