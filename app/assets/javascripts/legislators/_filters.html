@@ -1,0 +1,16 @@
+<div class="col-xs-6 col-sm-3 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show">
+  <table class="filter-container">
+    <tr>
+      <td><h3>B&uacute;squeda</h3></td>
+    </tr>
+    <tr>
+      <td>
+        <form>
+          <div class="form-group">
+            <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="legislator as legislator.name for legislator in searchFilter($viewValue)" typeahead-template-url="legislators/customTemplate.html" class="form-control">
+          </div>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>

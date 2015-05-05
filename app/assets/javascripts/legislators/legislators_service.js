@@ -20,5 +20,15 @@ app.service('LegislatorsService', ['$http', '$q', function ($http, $q) {
 	    deferred.reject();
 	  });
 		return deferred.promise;
-  }
+  };
+
+  this.search = function(query){
+  	var deferred = $q.defer();
+  	var url = '/api/legislators/search.json';
+  	$http({url: url, method: "GET", params: {query: query}}).then(function(resp) {
+    	deferred.resolve(resp.data);
+    });
+    return deferred.promise;
+  };
+
 }]);

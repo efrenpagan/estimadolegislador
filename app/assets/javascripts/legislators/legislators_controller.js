@@ -23,9 +23,17 @@ app.controller('LegislatorsController', ['$scope', '$state', 'legislatorsFactory
 			});
 		};
 
-		$scope.preview_image = function(file) {
+		$scope.preview_image = function(file){
 			if (!file.length) return;
 			$scope.legislator.image_preview = URL.createObjectURL(file[0]);
    	};
+
+   	
+   	$scope.searchFilter = function(query){
+   		return legislatorsFactory.search('all').then(function(data){
+   			console.log(data);
+	      return data;
+	    });
+  	};
 
 }]);

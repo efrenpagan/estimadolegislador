@@ -1,7 +1,8 @@
 app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService', function($http, $q, $upload, LegislatorsService){
 	var o = {
 		legislators: [],
-		legislator: {}
+		legislator: {},
+		search_results: []
 	};
 
 	o.index = function(){
@@ -68,6 +69,15 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 		})
     return deferred.promise;
 	};
+
+	o.search = function(query){
+		var deferred = $q.defer();
+		LegislatorsService.search(query).then(function(data){
+			angular.copy(data, o.search_results);
+			deferred.resolve(data);
+		});
+		return deferred.promise;
+	}
 
 	o.reset = function(){
 		var deferred = $q.defer();

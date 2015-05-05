@@ -1,4 +1,4 @@
-var app = angular.module('estimadoLegislador', ['ui.router', 'templates', 'angularFileUpload', 'ngQuill', 'ngSanitize', 'angularMoment'])
+var app = angular.module('estimadoLegislador', ['ui.router', 'templates', 'angularFileUpload', 'ngQuill', 'ngSanitize', 'angularMoment', 'ui.bootstrap'])
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider){

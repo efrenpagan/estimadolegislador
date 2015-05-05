@@ -42,6 +42,10 @@ class Api::LegislatorsController < ApplicationController
     end
   end
 
+  def search
+    render json: Legislator.all, status: :ok
+  end
+
   private
     def set_legislator
       @legislator = Legislator.find(params[:id])
