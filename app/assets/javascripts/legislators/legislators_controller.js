@@ -29,8 +29,8 @@ app.controller('LegislatorsController', ['$scope', '$state', 'legislatorsFactory
    	};
 
    	
-   	$scope.searchFilter = function(query){
-   		return legislatorsFactory.search('all').then(function(data){
+   	$scope.searchFilter = function(q){
+   		return legislatorsFactory.search(q).then(function(data){
    			console.log(data);
 	      return data;
 	    });

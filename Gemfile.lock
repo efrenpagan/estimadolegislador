@@ -52,6 +52,19 @@ GEM
     connection_pool (2.2.0)
     domain_name (0.5.22)
       unf (>= 0.0.5, < 1.0.0)
+    elasticsearch (1.0.8)
+      elasticsearch-api (= 1.0.7)
+      elasticsearch-transport (= 1.0.7)
+    elasticsearch-api (1.0.7)
+      multi_json
+    elasticsearch-model (0.1.7)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.7)
+    elasticsearch-transport (1.0.7)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.2.2)
     faraday (0.9.1)
@@ -60,6 +73,7 @@ GEM
       thor (~> 0.14)
     global (0.1.2)
       activesupport (>= 2.0)
+    hashie (3.4.1)
     hike (1.2.3)
     hitimes (1.2.2)
     http-cookie (1.0.2)
@@ -184,6 +198,8 @@ DEPENDENCIES
   angular_rails_csrf (= 1.0.3)
   aws-sdk (= 1.10.0)
   bitly (= 0.10.4)
+  elasticsearch-model (= 0.1.7)
+  elasticsearch-rails (= 0.1.7)
   figaro (= 1.1.0)
   global (= 0.1.2)
   jbuilder (~> 2.0)

@@ -37,13 +37,18 @@ class Api::LegislatorsController < ApplicationController
   def destroy
     @legislator.destroy
     respond_to do |format|
-      format.html { redirect_to yolos_url, notice: 'Legislator was successfully destroyed.' }
+      format.html { redirect_to legislators_url, notice: 'Legislator was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def search
-    render json: Legislator.all, status: :ok
+    legislators = Legislator::FilterLogic.search(
+      query: { query_string: {
+        query: "*#{params['query']}*"
+      }}
+    )
+    render json: legislators, status: :ok
   end
 
   private
