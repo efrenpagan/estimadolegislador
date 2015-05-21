@@ -11,7 +11,7 @@ module EmailLogic
   end
 
   def create_short_url(email)
-  	bitly = Bitly.client.shorten(URI::encode('http://'+ Global.config.domain +'/emails/'+ email.id))
+  	bitly = Bitly.client.shorten(URI::encode("http://#{Global.config.domain}/emails/#{email.id}"))
   	email.update(short_url: bitly.short_url)
   end
 
