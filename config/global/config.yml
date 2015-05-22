@@ -3,7 +3,7 @@ development:
     enabled: false
   sendgrid:
     enabled: false
-  domain: estimadolegislador.dev
+  domain: atentamente.dev
 
 test:
   aws_s3:
@@ -17,4 +17,4 @@ production:
     enabled: true
   sendgrid:
     enabled: true
-  domain: estimadolegislador.org
+  domain: atentamente.org

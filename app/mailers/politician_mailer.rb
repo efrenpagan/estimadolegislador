@@ -1,5 +1,5 @@
 class PoliticianMailer < ActionMailer::Base
-  default from: "mensaje@estimadolegislador.com"
+  default from: "mensaje@atentamente.org"
 
   def send_politician_email(email_params)
   	@email_params = email_params
