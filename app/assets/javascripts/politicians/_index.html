@@ -1,0 +1,28 @@
+<div class="row">
+  <div ng-include="'politicians/_filters.html'"></div>
+  <div class="col-md-9 col-md-offset-3">
+  	<table class="table table-hover">
+  		<tr ng-repeat="politician in politicians">
+  			<td class="img-container">
+  				<img ng-src="{{politician.image}}" class="img-rounded img-politician"/>
+  			</td>
+  			<td>
+  				<h4>
+  					Hon. {{politician.name}} <span ng-if="politician.position"> - {{politician.position}}</span>
+  				</h4>
+  				<p>
+  					{{politician.branch}} <span ng-if="politician.district == 'Acumulación'">por</span> {{politician.district}}
+  				</br>
+  				Partido Político: {{politician.political_party}} 
+  				</p>
+  			</td>
+  			<td class="actions">
+  				<a ui-sref="politicians.edit({ id: politician.id })">Edit</a> | 
+  				<a href="">Delete</a>
+  			</td>
+  		</tr>
+		</table>
+  </div>
+</div>
+
+<ui-view>

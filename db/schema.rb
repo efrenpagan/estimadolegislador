@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 20150411225314) do
     t.string   "message"
     t.boolean  "is_public"
     t.string   "short_url"
-    t.integer  "legislator_id"
+    t.integer  "politician_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "legislators", force: true do |t|
+  create_table "politicians", force: true do |t|
     t.string   "name"
     t.string   "branch"
     t.string   "email"

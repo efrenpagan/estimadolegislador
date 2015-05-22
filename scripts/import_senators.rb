@@ -30,6 +30,6 @@ page.search('table.ms-listviewtable tr').each_with_index do |row, i|
 	political_party = sen_extract_political_party(row)
 	email = sen_extract_email(row)
 	
-	Legislator.create(name: name, branch: 'senate', position: position, political_party: political_party, email: email)
+	Politician.create(name: name, branch: 'senate', position: position, political_party: political_party, email: email)
 
 end

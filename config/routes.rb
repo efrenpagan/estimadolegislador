@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :emails
-    resources :legislators do
+    resources :politicians do
     	collection do
     		get 'search'
     	end

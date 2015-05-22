@@ -23,7 +23,7 @@ class MailerWorker
       
       ActiveRecord::Base.transaction do
         EmailLogic.create_email(email_params)
-        LegislatorMailer.send_legislator_email(email_params).deliver
+        PoliticianMailer.send_politician_email(email_params).deliver
       end
       
       Sidekiq.redis do |conn|

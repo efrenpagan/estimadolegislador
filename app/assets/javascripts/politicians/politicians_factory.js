@@ -1,15 +1,15 @@
-app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService', function($http, $q, $upload, LegislatorsService){
+app.factory('politiciansFactory', ['$http', '$q', '$upload', 'PoliticiansService', function($http, $q, $upload, PoliticiansService){
 	var o = {
-		legislators: [],
-		legislator: {},
+		politicians: [],
+		politician: {},
 		search_results: []
 	};
 
 	o.index = function(){
 		var deferred = $q.defer();
-		$http.get('/api/legislators.json').
+		$http.get('/api/politicians.json').
 		success(function(data){
-			angular.copy(data, o.legislators);
+			angular.copy(data, o.politicians);
 	    deferred.resolve(data);
 		}).
 		error(function(data, status, headers, config) {
@@ -20,10 +20,10 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 
 	o.find = function(id){
 		var deferred = $q.defer();
-		LegislatorsService.find(id).
+		PoliticiansService.find(id).
 		then(function(data){
 			data.image_preview = data.image;
-			angular.copy(data, o.legislator);
+			angular.copy(data, o.politician);
 	    deferred.resolve(data);
 		}).
 		catch(function(data){
@@ -35,14 +35,14 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 	o.update = function(params){
 		var deferred = $q.defer();
 		$upload.upload({
-      url: '/api/legislators/'+params.id+'.json',
+      url: '/api/politicians/'+params.id+'.json',
       method: 'PUT',
-      fields: LegislatorsService.params('legislator', params),
+      fields: PoliticiansService.params('politician', params),
       file: params.image,
-      fileFormDataName: 'legislator[image]'
+      fileFormDataName: 'politician[image]'
     }).
     success(function (data, status, headers, config) {
-    	angular.copy(data, o.legislator);
+    	angular.copy(data, o.politician);
       deferred.resolve(data);
     })
     .error(function (data, status, headers, config) {
@@ -54,14 +54,14 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 	o.create = function(params){
 		var deferred = $q.defer();
 		$upload.upload({
-      url: '/api/legislators.json',
+      url: '/api/politicians.json',
       method: 'POST',
-      fields: LegislatorsService.params('legislator', params),
+      fields: PoliticiansService.params('politician', params),
       file: params.image,
-      fileFormDataName: 'legislator[image]'
+      fileFormDataName: 'politician[image]'
     }).
     success(function (data, status, headers, config) {
-    	angular.copy(data, o.legislator);
+    	angular.copy(data, o.politician);
       deferred.resolve(data);
     })
     .error(function (data, status, headers, config) {
@@ -72,7 +72,7 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 
 	o.search = function(query){
 		var deferred = $q.defer();
-		LegislatorsService.search(query).then(function(data){
+		PoliticiansService.search(query).then(function(data){
 			angular.copy(data, o.search_results);
 			deferred.resolve(data);
 		});
@@ -81,7 +81,7 @@ app.factory('legislatorsFactory', ['$http', '$q', '$upload', 'LegislatorsService
 
 	o.reset = function(){
 		var deferred = $q.defer();
-    angular.copy({}, o.legislator);
+    angular.copy({}, o.politician);
     deferred.resolve({});
     return deferred.promise;
 	};

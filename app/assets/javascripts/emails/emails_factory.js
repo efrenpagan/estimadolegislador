@@ -1,7 +1,7 @@
-app.factory('emailsFactory', ['$http', '$q', 'LegislatorsService', function($http, $q, LegislatorsService){
+app.factory('emailsFactory', ['$http', '$q', 'PoliticiansService', function($http, $q, PoliticiansService){
 	var o = {
 		email: {
-			legislator: {}
+			politician: {}
 		},
 		emails: []
 	};
@@ -19,12 +19,12 @@ app.factory('emailsFactory', ['$http', '$q', 'LegislatorsService', function($htt
 		return deferred.promise;
 	};
 
-	o.newEmail = function(legislator_id){
+	o.newEmail = function(politician_id){
 		var deferred = $q.defer();
-		LegislatorsService.find(legislator_id).
+		PoliticiansService.find(politician_id).
 		then(function(data){
-			angular.copy(data, o.email.legislator);
-			o.email.legislator_id = data.id;
+			angular.copy(data, o.email.politician);
+			o.email.politician_id = data.id;
 	    deferred.resolve(data);
 		}).
 		catch(function(data){

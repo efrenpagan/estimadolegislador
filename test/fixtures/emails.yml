@@ -7,7 +7,7 @@ one:
   message: MyString
   public: false
   short_url: MyString
-  legislator_id: 1
+  politician_id: 1
 
 two:
   from_name: MyString
@@ -16,4 +16,4 @@ two:
   message: MyString
   public: false
   short_url: MyString
-  legislator_id: 1
+  politician_id: 1

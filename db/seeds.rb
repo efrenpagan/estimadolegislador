@@ -43,7 +43,7 @@ page.search('.info-wrap').each do |row|
 	district = rep_extract_district(row)
 	image_src = page_url + rep_extract_image_scr(row)
 
-	Legislator.create(name: name, branch: 'representative', position: position, district: district, political_party: political_party, image: URI.parse(image_src))
+	Politician.create(name: name, branch: 'representative', position: position, district: district, political_party: political_party, image: URI.parse(image_src))
 
 end
 
@@ -76,6 +76,6 @@ page.search('table.ms-listviewtable tr').each_with_index do |row, i|
 	political_party = sen_extract_political_party(row)
 	email = sen_extract_email(row)
 	
-	Legislator.create(name: name, branch: 'senate', position: position, political_party: political_party, email: email)
+	Politician.create(name: name, branch: 'senate', position: position, political_party: political_party, email: email)
 
 end

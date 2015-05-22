@@ -4,46 +4,46 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider){
 		$locationProvider.html5Mode(true);
 		$stateProvider
-			.state('legislators', {
+			.state('politicians', {
 				abstract: true,
-				url: '/legislators',
+				url: '/politicians',
 				template: '<ui-view/>',
-				controller: 'LegislatorsController'
+				controller: 'PoliticiansController'
 			})
-			.state('legislators.index', {
+			.state('politicians.index', {
 				url: '',
-				templateUrl: 'legislators/_index.html',
+				templateUrl: 'politicians/_index.html',
 				resolve: {
-					init: ['legislatorsFactory', function(legislatorsFactory){
-						return legislatorsFactory.index();
+					init: ['politiciansFactory', function(politiciansFactory){
+						return politiciansFactory.index();
 					}]
 				}
 			})
-			.state('legislators.new', {
+			.state('politicians.new', {
 				url: '/new',
-				templateUrl: 'legislators/_new.html',
+				templateUrl: 'politicians/_new.html',
 				resolve: {
-					init: ['legislatorsFactory', function(legislatorsFactory){
-						return legislatorsFactory.reset();
+					init: ['politiciansFactory', function(politiciansFactory){
+						return politiciansFactory.reset();
 					}]
 				}
 			})
-			.state('legislators.edit', {
+			.state('politicians.edit', {
 				url: '/:id/edit',
-				templateUrl: 'legislators/_edit.html',
+				templateUrl: 'politicians/_edit.html',
 				resolve: {
-					init: ['$stateParams', 'legislatorsFactory', function($stateParams, legislatorsFactory){
-						return legislatorsFactory.find($stateParams.id);
+					init: ['$stateParams', 'politiciansFactory', function($stateParams, politiciansFactory){
+						return politiciansFactory.find($stateParams.id);
 					}]
 				}
 			})
-			.state('legislators.new_email', {
-				url: '/:legislator_id/new_email',
+			.state('politicians.new_email', {
+				url: '/:politician_id/new_email',
 				templateUrl: 'emails/_new.html',
 				controller: 'EmailsController',
 				resolve: {
 					init: ['$stateParams', 'emailsFactory', function($stateParams, emailsFactory){
-						return emailsFactory.newEmail($stateParams.legislator_id);
+						return emailsFactory.newEmail($stateParams.politician_id);
 					}]
 				}
 			})
@@ -71,7 +71,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 					}]
 				}
 			});
-		$urlRouterProvider.otherwise('legislators');	
+		$urlRouterProvider.otherwise('politicians');	
 	}
 ]);
 

@@ -7,7 +7,7 @@
       <td>
         <form>
           <div class="form-group">
-            <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="legislator as legislator.name for legislator in searchFilter($viewValue)" typeahead-template-url="legislators/customTemplate.html" class="form-control">
+            <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="politician as politician.name for politician in searchFilter($viewValue)" typeahead-template-url="politicians/customTemplate.html" class="form-control">
           </div>
         </form>
       </td>

@@ -1,6 +1,6 @@
-class CreateLegislators < ActiveRecord::Migration
+class CreatePoliticians < ActiveRecord::Migration
   def change
-    create_table :legislators do |t|
+    create_table :politicians do |t|
       t.string :name
       t.string :branch
       t.string :email

@@ -42,6 +42,6 @@ page.search('.info-wrap').each do |row|
 	district = extract_district(row)
 	image_src = page_url + extract_image_scr(row)
 
-	Legislator.create(name: name, branch: 'representative', position: position, district: district, political_party: political_party, image: URI.parse(image_src))
+	Politician.create(name: name, branch: 'representative', position: position, district: district, political_party: political_party, image: URI.parse(image_src))
 
 end

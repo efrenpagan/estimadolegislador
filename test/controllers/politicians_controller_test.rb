@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LegislatorTest < ActiveSupport::TestCase
+class PoliticiansControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

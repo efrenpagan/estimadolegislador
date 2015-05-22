@@ -65,6 +65,6 @@ class Api::EmailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_params
-      params.require(:email).permit(:from_name, :from_email, :subject, :message, :is_public, :short_url, :legislator_id)
+      params.require(:email).permit(:from_name, :from_email, :subject, :message, :is_public, :short_url, :politician_id)
     end
 end

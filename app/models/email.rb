@@ -1,7 +1,7 @@
 class Email < ActiveRecord::Base
-	belongs_to :legislator
+	belongs_to :politician
 	validate :email_fields
-	validates_presence_of :legislator
+	validates_presence_of :politician
 	after_create :create_short_url
 	default_scope { order("created_at") }
 

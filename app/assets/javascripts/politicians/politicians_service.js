@@ -1,4 +1,4 @@
-app.service('LegislatorsService', ['$http', '$q', function ($http, $q) {
+app.service('PoliticiansService', ['$http', '$q', function ($http, $q) {
   this.params = function (obj, params) {
 		var newParams = {};
 		for (var key in params) {
@@ -10,9 +10,9 @@ app.service('LegislatorsService', ['$http', '$q', function ($http, $q) {
 		return newParams;		
   };
 
-  this.find = function(legislator_id){
+  this.find = function(politician_id){
   	var deferred = $q.defer();
-		$http.get('/api/legislators/'+legislator_id+'.json').
+		$http.get('/api/politicians/'+politician_id+'.json').
 		success(function(data){
 	    deferred.resolve(data);
 		}).
@@ -24,7 +24,7 @@ app.service('LegislatorsService', ['$http', '$q', function ($http, $q) {
 
   this.search = function(query){
   	var deferred = $q.defer();
-  	var url = '/api/legislators/search.json';
+  	var url = '/api/politicians/search.json';
   	$http({url: url, method: "GET", params: {query: query}}).then(function(resp) {
     	deferred.resolve(resp.data);
     });
