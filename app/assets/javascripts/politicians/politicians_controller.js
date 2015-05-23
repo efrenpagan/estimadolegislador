@@ -2,6 +2,7 @@ app.controller('PoliticiansController', ['$scope', '$state', 'politiciansFactory
 	function($scope, $state, politiciansFactory) {
 		$scope.politicians = politiciansFactory.politicians;
 		$scope.politician = politiciansFactory.politician;
+		$scope.recipients = politiciansFactory.recipients;
 
 		$scope.updatePolitician = function(params){
 			politiciansFactory.update(params).
@@ -22,6 +23,14 @@ app.controller('PoliticiansController', ['$scope', '$state', 'politiciansFactory
 				console.error(data);
 			});
 		};
+
+		$scope.addRecipient = function(politician){
+			politiciansFactory.addRecipient(politician);
+		}
+
+		$scope.removeRecipient = function(politician){
+			politiciansFactory.removeRecipient(politician);
+		}
 
 		$scope.preview_image = function(file){
 			if (!file.length) return;

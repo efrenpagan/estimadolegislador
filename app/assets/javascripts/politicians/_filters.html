@@ -13,4 +13,16 @@
       </td>
     </tr>
   </table>
+  <table class="table">
+    <tr ng-repeat="politician in recipients">
+      <td>
+        <img ng-src="{{politician.image}}" class="img-rounded img-recipient"/>
+      </td>
+      <td>
+        <p> Hon. {{politician.name}} </p>
+      <td>
+        <p><a ng-click="removeRecipient(politician)"><i class="fa fa-times"></i></a></p>
+      </td>
+    </tr>
+  </table>
 </div>

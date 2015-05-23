@@ -2,6 +2,7 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', 'PoliticiansService
 	var o = {
 		politicians: [],
 		politician: {},
+		recipients: [],
 		search_results: []
 	};
 
@@ -84,6 +85,14 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', 'PoliticiansService
     angular.copy({}, o.politician);
     deferred.resolve({});
     return deferred.promise;
+	};
+
+	o.addRecipient = function(politician){
+		o.recipients.push(o.politicians.splice(o.politicians.indexOf(politician), 1)[0]);
+	};
+
+	o.removeRecipient = function(politician){
+		o.politicians.push(o.recipients.splice(o.recipients.indexOf(politician), 1)[0]);
 	};
 
 	return o;
