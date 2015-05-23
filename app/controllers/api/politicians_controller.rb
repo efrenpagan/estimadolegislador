@@ -14,15 +14,10 @@ class Api::PoliticiansController < ApplicationController
 
   def create
     @politician = Politician.new(politician_params)
-
-    respond_to do |format|
-      if @politician.save
-        format.html { redirect_to @politician, notice: 'Politician was successfully created.' }
-        format.json { render :show, status: :created, location: @politician }
-      else
-        format.html { render :new }
-        format.json { render json: @politician.errors, status: :unprocessable_entity }
-      end
+    if @politician.save
+      render :show, status: :created
+    else
+      render json: @politician.errors, status: :unprocessable_entity 
     end
   end
 
@@ -36,10 +31,7 @@ class Api::PoliticiansController < ApplicationController
 
   def destroy
     @politician.destroy
-    respond_to do |format|
-      format.html { redirect_to politicians_url, notice: 'Politician was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   def search
@@ -57,7 +49,7 @@ class Api::PoliticiansController < ApplicationController
     end
 
     def politician_params
-      params.require(:politician).permit(:name, :email, :position, :district, :political_party, :branch, :image)
+      params.require(:politician).permit(:name, :email, :position, :description, :role, :political_party, :image)
     end
 
 end

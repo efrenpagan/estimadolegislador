@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20150411225314) do
 
   create_table "politicians", force: true do |t|
     t.string   "name"
-    t.string   "branch"
-    t.string   "email"
     t.string   "position"
-    t.string   "district"
+    t.string   "description"
+    t.string   "role"
+    t.string   "email"
     t.string   "political_party"
     t.datetime "created_at"
     t.datetime "updated_at"

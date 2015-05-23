@@ -1,3 +1,3 @@
 object @politician
-attributes :id, :name, :email, :position, :district, :political_party, :branch
+attributes :id, :name, :description, :role, :political_party, :position
 node(:image) { |politician| politician.image.url }

@@ -9,14 +9,22 @@ class Politician < ActiveRecord::Base
 	has_attached_file :image
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-	validates :branch, inclusion: { in: %w[senate representative] }
+	validates :position, inclusion: { in: %w[governor senator representative mayor] }
 
-	def representative?
-		branch == 'representative'
+	def governor?
+		position == 'governor'
 	end
 
 	def senator?
-		branch == 'senate'
+		position == 'senator'
+	end
+
+	def representative?
+		position == 'representative'
+	end
+
+	def mayor?
+		position == 'mayor'
 	end
 
 	settings index: { 
