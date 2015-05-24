@@ -35,12 +35,8 @@ class Api::PoliticiansController < ApplicationController
   end
 
   def search
-    politicians = Politician::FilterLogic.search(
-      query: { query_string: {
-        query: "*#{params['query']}*"
-      }}
-    )
-    render json: politicians, status: :ok
+    @politicians = Politician::FilterLogic.search(params['query'], params['filtered_ids'])
+    render :index, status: :ok
   end
 
   private

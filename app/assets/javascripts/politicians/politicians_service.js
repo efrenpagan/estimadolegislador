@@ -22,10 +22,10 @@ app.service('PoliticiansService', ['$http', '$q', function ($http, $q) {
 		return deferred.promise;
   };
 
-  this.search = function(query){
+  this.search = function(query, filtered_ids){
   	var deferred = $q.defer();
   	var url = '/api/politicians/search.json';
-  	$http({url: url, method: "GET", params: {query: query}}).then(function(resp) {
+  	$http({url: url, method: "GET", params: {query: query, filtered_ids: JSON.stringify(filtered_ids)}}).then(function(resp) {
     	deferred.resolve(resp.data);
     });
     return deferred.promise;

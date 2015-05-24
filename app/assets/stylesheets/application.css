@@ -49,6 +49,10 @@
 	width: 200px;
 }
 
+.search-subtitle{
+	font-size: 12px;
+}
+
 .ql-container{
 	height: 250px !important;
 }
