@@ -1,4 +1,8 @@
-app.factory('politiciansFactory', ['$http', '$q', '$upload', 'PoliticiansService', function($http, $q, $upload, PoliticiansService){
+app.factory('politiciansFactory', ['$http', '$q', '$upload', '$filter', '$sessionStorage', 'PoliticiansService', function($http, $q, $upload, $filter, $sessionStorage, PoliticiansService){
+
+	// Keep ids of recipients in session to make them available if the user refresh or change page
+	$sessionStorage.recipients_ids = $sessionStorage.recipients_ids || [];
+
 	var o = {
 		politicians: [],
 		politician: {},
@@ -10,6 +14,17 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', 'PoliticiansService
 		var deferred = $q.defer();
 		$http.get('/api/politicians.json').
 		success(function(data){
+			// This is a good code candidate for improvement
+			if (!o.recipients.length){
+				$sessionStorage.recipients_ids.forEach(function(id){
+					data.some(function(item, index){
+						if (item.id == id){
+							o.recipients.push(data.splice(index, 1)[0]);
+							return true;
+						};
+					});
+				});
+			}
 			angular.copy(data, o.politicians);
 	    deferred.resolve(data);
 		}).
@@ -71,8 +86,9 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', 'PoliticiansService
     return deferred.promise;
 	};
 
-	o.search = function(query, filtered_ids){
+	o.search = function(query){
 		var deferred = $q.defer();
+		var filtered_ids = $sessionStorage.recipients_ids
 		PoliticiansService.search(query, filtered_ids).then(function(data){
 			angular.copy(data, o.search_results);
 			deferred.resolve(data);
@@ -89,10 +105,12 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', 'PoliticiansService
 
 	o.addRecipient = function(politician){
 		o.recipients.push(o.politicians.splice(o.politicians.indexOf(politician), 1)[0]);
+		$sessionStorage.recipients_ids.push(politician.id);
 	};
 
 	o.removeRecipient = function(politician){
 		o.politicians.push(o.recipients.splice(o.recipients.indexOf(politician), 1)[0]);
+		$sessionStorage.recipients_ids.splice($sessionStorage.recipients_ids.indexOf(politician.id), 1)
 	};
 
 	return o;

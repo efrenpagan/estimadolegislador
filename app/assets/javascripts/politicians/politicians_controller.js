@@ -43,8 +43,7 @@ app.controller('PoliticiansController', ['$scope', '$state', '$filter', 'politic
    	};
    	
    	$scope.searchFilter = function(q){
-   		var filtered_ids = $filter('getIds')($scope.recipients)
-   		return politiciansFactory.search(q, filtered_ids).then(function(data){
+   		return politiciansFactory.search(q).then(function(data){
    			console.log(data);
 	      return data;
 	    });

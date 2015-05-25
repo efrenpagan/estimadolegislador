@@ -13,5 +13,6 @@
 //= require angular-sanitize
 //= require moment/locale/es
 //= require angular-bootstrap/ui-bootstrap-tpls
+//= require ngStorage
 
 //= require_tree .
