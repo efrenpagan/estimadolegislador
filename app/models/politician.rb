@@ -4,7 +4,8 @@ class Politician < ActiveRecord::Base
 	include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-	has_many :emails
+	has_many :email_politicians
+	has_many :emails, through: :email_politicians
 
 	has_attached_file :image
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/

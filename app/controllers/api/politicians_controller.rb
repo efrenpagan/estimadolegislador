@@ -2,7 +2,12 @@ class Api::PoliticiansController < ApplicationController
 	before_action :set_politician, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@politicians = Politician.all
+    if params['ids'].present?
+      ids = JSON.parse(params['ids'])
+      @politicians = Politician.find(ids).index_by(&:id).slice(*ids).values
+    else
+      @politicians = Politician.all
+    end
 	end
 
   def show

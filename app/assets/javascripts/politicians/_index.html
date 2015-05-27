@@ -1,5 +1,5 @@
 <div class="row">
-  <div ng-include="'politicians/_filters.html'"></div>
+  <div ng-include="'politicians/_recipients.html'"></div>
   <div class="col-md-9 col-md-offset-3">
     <div class="form-group">
       <input type="text" ng-model="searchField" placeholder="Buscar" typeahead="politician as politician.name for politician in searchFilter($viewValue)" typeahead-template-url="politicians/customTemplate.html" typeahead-on-select="onSelect($item, $model, $label); searchField = '';" class="form-control">
@@ -28,5 +28,3 @@
 		</table>
   </div>
 </div>
-
-<ui-view>

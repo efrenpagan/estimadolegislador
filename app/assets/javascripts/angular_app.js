@@ -37,16 +37,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 					}]
 				}
 			})
-			.state('politicians.new_email', {
-				url: '/:politician_id/new_email',
-				templateUrl: 'emails/_new.html',
-				controller: 'EmailsController',
-				resolve: {
-					init: ['$stateParams', 'emailsFactory', function($stateParams, emailsFactory){
-						return emailsFactory.newEmail($stateParams.politician_id);
-					}]
-				}
-			})
 			.state('emails', {
 				abstract: true,
 				url: '/emails',
@@ -59,6 +49,15 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				resolve: {
 					init: ['emailsFactory', function(emailsFactory){
 						return emailsFactory.index();
+					}]
+				}
+			})
+			.state('emails.new', {
+				url: '/new',
+				templateUrl: 'emails/_new.html',
+				resolve: {
+					init: ['emailsFactory', function(emailsFactory){
+						return emailsFactory.newEmail();
 					}]
 				}
 			})

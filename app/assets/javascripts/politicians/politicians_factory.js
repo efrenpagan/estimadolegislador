@@ -79,8 +79,8 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', '$filter', '$sessio
     success(function (data, status, headers, config) {
     	angular.copy(data, o.politician);
       deferred.resolve(data);
-    })
-    .error(function (data, status, headers, config) {
+    }).
+    error(function (data, status, headers, config) {
 			deferred.reject(status);
 		})
     return deferred.promise;
@@ -94,7 +94,7 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', '$filter', '$sessio
 			deferred.resolve(data);
 		});
 		return deferred.promise;
-	}
+	};
 
 	o.reset = function(){
 		var deferred = $q.defer();

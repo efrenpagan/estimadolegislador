@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411225314) do
+ActiveRecord::Schema.define(version: 20150525050708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "email_politicians", force: true do |t|
+    t.integer  "email_id"
+    t.integer  "politician_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "emails", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "from_name"
@@ -24,7 +31,6 @@ ActiveRecord::Schema.define(version: 20150411225314) do
     t.string   "message"
     t.boolean  "is_public"
     t.string   "short_url"
-    t.integer  "politician_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

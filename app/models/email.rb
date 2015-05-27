@@ -1,8 +1,12 @@
 class Email < ActiveRecord::Base
-	belongs_to :politician
+	has_many :email_politicians
+	has_many :politicians, through: :email_politicians
+
 	validate :email_fields
 	validates_presence_of :politician
+
 	after_create :create_short_url
+	
 	default_scope { order("created_at") }
 
 	private
