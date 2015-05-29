@@ -14,8 +14,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				url: '',
 				templateUrl: 'politicians/_index.html',
 				resolve: {
-					init: ['politiciansFactory', function(politiciansFactory){
-						return politiciansFactory.index();
+					recipients: ['recipientsFactory', function(recipientsFactory){
+						return recipientsFactory.getRecipients();
+					}],
+					non_recipients: ['recipientsFactory', function(recipientsFactory){
+						return recipientsFactory.getNonRecipients();
 					}]
 				}
 			})
@@ -56,8 +59,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				url: '/new',
 				templateUrl: 'emails/_new.html',
 				resolve: {
-					init: ['emailsFactory', function(emailsFactory){
-						return emailsFactory.newEmail();
+					init: ['recipientsFactory', function(recipientsFactory){
+						return recipientsFactory.getRecipients();
 					}]
 				}
 			})
@@ -70,7 +73,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 					}]
 				}
 			});
-		$urlRouterProvider.otherwise('politicians');	
+		$urlRouterProvider.otherwise('politicians');
 	}
 ]);
 

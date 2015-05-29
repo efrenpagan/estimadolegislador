@@ -7,28 +7,12 @@ app.service('PoliticiansService', ['$http', '$q', function ($http, $q) {
 		  	newParams[newKey] = params[key];
 		  }
 		}
-		return newParams;		
+		return newParams;
   };
 
   this.find = function(politician_id){
   	var deferred = $q.defer();
 		$http.get('/api/politicians/'+politician_id+'.json').
-		success(function(data){
-	    deferred.resolve(data);
-		}).
-		error(function(data, status, headers, config) {
-	    deferred.reject();
-	  });
-		return deferred.promise;
-  };
-
-  this.find_recipients = function(ids){
-  	var deferred = $q.defer();
-		$http({
-			url: '/api/politicians.json',
-			method: 'GET',
-  		params: {ids: JSON.stringify(ids)}
-		}).
 		success(function(data){
 	    deferred.resolve(data);
 		}).

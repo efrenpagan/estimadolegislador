@@ -1,10 +1,10 @@
-app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansService', function($http, $q, $sessionStorage, PoliticiansService){
+app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansService', 'recipientsFactory', function($http, $q, $sessionStorage, PoliticiansService, recipientsFactory){
 
 	$sessionStorage.recipients_ids = $sessionStorage.recipients_ids || [];
 
 	var o = {
 		email: {
-			recipients: []
+			recipients: recipientsFactory.recipients
 		},
 		emails: []
 	};
@@ -19,19 +19,6 @@ app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansServ
 		error(function(data, status, headers, config) {
 	    deferred.reject();
 	  });
-		return deferred.promise;
-	};
-
-	o.newEmail = function(){
-		var deferred = $q.defer();
-		PoliticiansService.find_recipients($sessionStorage.recipients_ids).
-		then(function(data){
-			angular.copy(data, o.email.recipients);
-	    deferred.resolve(data);
-		}).
-		catch(function(data){
-			deferred.reject();
-		});
 		return deferred.promise;
 	};
 

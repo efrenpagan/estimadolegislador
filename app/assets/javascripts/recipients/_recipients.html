@@ -1,0 +1,17 @@
+<div ng-controller="RecipientsController" class="col-xs-6 col-sm-3 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show">
+  <table>
+    <tr><td><h3>Recipientes</h3></td><td> <a ui-sref="emails.new" class="btn btn-default">Redactar</a></td></tr>
+  </table>
+  <table class="table">
+    <tr ng-repeat="recipient in recipients">
+      <td>
+        <img ng-src="{{recipient.image}}" class="img-rounded img-recipient"/>
+      </td>
+      <td>
+        <p> Hon. {{recipient.name}} </p>
+      <td>
+        <p><a ng-click="remove(recipient)"><i class="fa fa-times"></i></a></p>
+      </td>
+    </tr>
+  </table>
+</div>

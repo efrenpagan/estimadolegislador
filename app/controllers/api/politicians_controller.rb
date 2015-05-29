@@ -3,8 +3,12 @@ class Api::PoliticiansController < ApplicationController
 
 	def index
     if params['ids'].present?
-      ids = JSON.parse(params['ids'])
-      @politicians = Politician.find(ids).index_by(&:id).slice(*ids).values
+			ids = JSON.parse(params['ids'])
+			if params['include_ids'] == "true" # Recipients
+				@politicians = Politician.find(ids).index_by(&:id).slice(*ids).values
+			else # Non Recipients
+				@politicians = Politician.where.not(id: ids)
+			end
     else
       @politicians = Politician.all
     end
@@ -22,7 +26,7 @@ class Api::PoliticiansController < ApplicationController
     if @politician.save
       render :show, status: :created
     else
-      render json: @politician.errors, status: :unprocessable_entity 
+      render json: @politician.errors, status: :unprocessable_entity
     end
   end
 

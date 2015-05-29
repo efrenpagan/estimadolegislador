@@ -3,7 +3,6 @@ class Email < ActiveRecord::Base
 	has_many :politicians, through: :email_politicians
 
 	validate :email_fields
-	validates_presence_of :politician
 
 	after_create :create_short_url
 	
