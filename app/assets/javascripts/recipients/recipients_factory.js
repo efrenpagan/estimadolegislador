@@ -42,5 +42,14 @@ app.factory('recipientsFactory', ['$http', '$q', 'RecipientsService', function($
     RecipientsService.remove(recipient);
   };
 
+  o.search = function(query){
+		var deferred = $q.defer();
+    RecipientsService.search(query).then(function(data){
+			angular.copy(data, o.search_results);
+			deferred.resolve(data);
+		});
+		return deferred.promise;
+	};
+
 	return o;
 }]);

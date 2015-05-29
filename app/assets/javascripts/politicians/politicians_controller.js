@@ -32,36 +32,12 @@ app.controller('PoliticiansController', ['$scope', '$state', '$filter', 'politic
 			politiciansFactory.removeRecipient(politician);
 		};
 
-		$scope.onSelect = function(item, model, label){
-			var selection = $filter('getByProperty')('id', item.id, $scope.politicians)
-			if (selection) $scope.addRecipient(selection);
-		};
-
 		$scope.preview_image = function(file){
 			if (!file.length) return;
 			$scope.politician.image_preview = URL.createObjectURL(file[0]);
    	};
-   	
-   	$scope.searchFilter = function(q){
-   		return politiciansFactory.search(q).then(function(data){
-   			console.log(data);
-	      return data;
-	    });
-  	};
-}]);
 
-app.filter('getByProperty', function(){
-	return function(property, value, collection){
-		var result;
-		collection.some(function(item){
-			if (item[property] == value){
-				result = item;
-				return true;
-			};
-		});
-		return result;
-	};
-});
+}]);
 
 app.filter('getIds', function(){
 	return function(collection){

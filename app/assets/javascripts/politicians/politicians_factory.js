@@ -57,17 +57,7 @@ app.factory('politiciansFactory', ['$http', '$q', '$upload', '$filter', 'Politic
 		})
     return deferred.promise;
 	};
-
-	o.search = function(query){
-		var deferred = $q.defer();
-		var filtered_ids = recipientsFactory.recipients_ids
-		PoliticiansService.search(query, filtered_ids).then(function(data){
-			angular.copy(data, o.search_results);
-			deferred.resolve(data);
-		});
-		return deferred.promise;
-	};
-
+	
 	o.reset = function(){
 		var deferred = $q.defer();
     angular.copy({}, o.politician);

@@ -44,4 +44,17 @@ app.service('RecipientsService', ['$http', '$q', '$sessionStorage', function ($h
 		$sessionStorage.recipients_ids.splice($sessionStorage.recipients_ids.indexOf(recipient.id), 1)
 	};
 
+	this.search = function(query){
+		var deferred = $q.defer();
+		$http({
+			url: '/api/politicians/search.json',
+			method: 'GET',
+			params: {query: query, filtered_ids: JSON.stringify(this.recipients_ids)}
+		}).
+		then(function(resp) {
+			deferred.resolve(resp.data);
+		});
+		return deferred.promise;
+	};
+
 }]);

@@ -59,8 +59,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				url: '/new',
 				templateUrl: 'emails/_new.html',
 				resolve: {
-					init: ['recipientsFactory', function(recipientsFactory){
+					recipients: ['recipientsFactory', function(recipientsFactory){
 						return recipientsFactory.getRecipients();
+					}],
+					non_recipients: ['recipientsFactory', function(recipientsFactory){
+						return recipientsFactory.getNonRecipients();
 					}]
 				}
 			})
