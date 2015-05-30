@@ -4,8 +4,8 @@ class Politician < ActiveRecord::Base
 	include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-	has_many :email_politicians
-	has_many :emails, through: :email_politicians
+	has_many :recipients
+	has_many :emails, through: :recipients
 
 	has_attached_file :image
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -28,7 +28,7 @@ class Politician < ActiveRecord::Base
 		position == 'mayor'
 	end
 
-	settings index: { 
+	settings index: {
 		number_of_shards: 1,
 		analysis: {
 			analyzer: {
@@ -37,7 +37,7 @@ class Politician < ActiveRecord::Base
 					filter: ["standard", "lowercase", "asciifolding"]
 				}
 			}
-		} 
+		}
 	} do
 	  mappings dynamic: 'false' do
 	    indexes :name, analyzer: 'default'
@@ -47,9 +47,9 @@ class Politician < ActiveRecord::Base
 end
 
 Politician.__elasticsearch__.client.indices.delete index: Politician.index_name rescue nil
- 
+
 Politician.__elasticsearch__.client.indices.create \
   index: Politician.index_name,
   body: { settings: Politician.settings.to_hash, mappings: Politician.mappings.to_hash }
- 
+
 Politician.import

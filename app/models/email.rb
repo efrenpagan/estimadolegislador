@@ -1,11 +1,12 @@
 class Email < ActiveRecord::Base
-	has_many :email_politicians
-	has_many :politicians, through: :email_politicians
+	has_many :recipients
+	has_many :politicians, through: :recipients
+	accepts_nested_attributes_for :recipients
 
 	validate :email_fields
 
 	after_create :create_short_url
-	
+
 	default_scope { order("created_at") }
 
 	private

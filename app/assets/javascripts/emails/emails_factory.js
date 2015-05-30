@@ -4,7 +4,7 @@ app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansServ
 
 	var o = {
 		email: {
-			recipients: recipientsFactory.recipients
+			politicians: recipientsFactory.recipients
 		},
 		emails: []
 	};
