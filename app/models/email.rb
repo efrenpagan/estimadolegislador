@@ -1,7 +1,6 @@
 class Email < ActiveRecord::Base
 	has_many :recipients
 	has_many :politicians, through: :recipients
-	accepts_nested_attributes_for :recipients
 
 	validate :email_fields
 

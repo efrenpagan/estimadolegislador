@@ -1,7 +1,7 @@
 module EmailLogic
   extend self
 
-  def send_email_async(email_params)
+  def send_politician_email_async(email_params)
     MailerWorker.create(email_params)
   end
 

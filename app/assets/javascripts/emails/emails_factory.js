@@ -4,7 +4,7 @@ app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansServ
 
 	var o = {
 		email: {
-			politicians: recipientsFactory.recipients
+			politician_ids: recipientsFactory.recipients_ids
 		},
 		emails: []
 	};
@@ -26,11 +26,9 @@ app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansServ
 		var deferred = $q.defer();
 		$http.post('/api/emails.json', { email: email }).
 	  success(function(data, status, headers, config) {
-	  	console.log(data);
 	    deferred.resolve(data);
 	  }).
 	  error(function(data, status, headers, config) {
-	  	console.log(data);
 	    deferred.reject();
 	  });
 		return deferred.promise;
@@ -40,7 +38,6 @@ app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansServ
 		var deferred = $q.defer();
 		$http.get('/api/emails/'+id+'.json').
 		success(function(data){
-			console.log(data)
 			angular.copy(data, o.email);
 	    deferred.resolve(data);
 		}).

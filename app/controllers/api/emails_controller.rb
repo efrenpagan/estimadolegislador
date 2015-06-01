@@ -26,7 +26,7 @@ class Api::EmailsController < ApplicationController
   def create
     email = Email.new(email_params)
     if email.valid?
-      task_key = EmailLogic.send_email_async(email_params)
+      task_key = EmailLogic.send_politician_email_async(email_params)
       render json: { task_key: task_key }, status: :ok
     else
       render json: email.errors, status: :unprocessable_entity
@@ -65,6 +65,6 @@ class Api::EmailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_params
-      params.require(:email).permit(:from_name, :from_email, :subject, :message, :is_public, :short_url, :politicians => [:id])
+      params.require(:email).permit(:from_name, :from_email, :subject, :message, :is_public, :short_url, politician_ids: [])
     end
 end

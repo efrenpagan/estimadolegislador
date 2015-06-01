@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150525050708) do
   end
 
   create_table "recipients", force: true do |t|
-    t.integer  "email_id"
+    t.uuid     "email_id"
     t.integer  "politician_id"
     t.datetime "created_at"
     t.datetime "updated_at"

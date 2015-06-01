@@ -3,7 +3,7 @@ class PoliticianMailer < ActionMailer::Base
 
   def send_politician_email(email_params)
   	@email_params = email_params
-    @politician = Politician.find(@email_params['politician_id'])
+    @politicians = Politician.find(@email_params['politician_ids'])
     mail(to: "roberto@devstud.io", subject: @email_params['subject'] )
   end
 end
