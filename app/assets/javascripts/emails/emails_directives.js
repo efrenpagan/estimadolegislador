@@ -3,11 +3,11 @@ app.directive('emailStatus', function($compile){
     scope.getTemplateUrl = function() {
       switch(scope.status) {
         case 'pending':
-          return 'emails/modal_templates/_pending.html';
+          return 'emails/modal/_pending.html';
         case 'success':
-          return 'emails/modal_templates/_success.html';
+          return 'emails/modal/_success.html';
         default:
-          return 'emails/modal_templates/_error.html';
+          return 'emails/modal/_error.html';
        };
     };
 

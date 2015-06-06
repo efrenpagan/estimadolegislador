@@ -1,33 +1,21 @@
-app.controller('EmailsController', ['$scope', '$state', '$timeout', '$modal', 'emailsFactory',
-	function($scope, $state, $timeout, $modal, emailsFactory) {
+app.controller('EmailsController', ['$scope', '$state', '$timeout', '$modal', 'emailsFactory', 'modalFactory',
+	function($scope, $state, $timeout, $modal, emailsFactory, modalFactory) {
 		$scope.emails = emailsFactory.emails;
 		$scope.email = emailsFactory.email;
 
 		$scope.sendEmail = function(email){
 			$scope.status = 'pending';
-			open();
+			modalFactory.open($scope);
 			emailsFactory.sendEmail(email).
 			then(function(data){
 				getStatus(data.task_key);
 			}).
 			catch(function(data){
 				$scope.status = 'error';
+				$timeout(modalFactory.close, 3000);
 				console.error(data);
 			});
 		};
-
-		open = function(){
-	    var modalInstance = $modal.open({
-	      animation: true,
-	      template: '<email-status/>',
-				scope: $scope,
-				controller: function ($scope) {
-          $scope.ok = function(){
-            console.log('ok');
-          };
-        }
-	    });
-	  };
 
 		getStatus = function(task_key){
 			emailsFactory.getStatus(task_key).
