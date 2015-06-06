@@ -13,19 +13,23 @@ class MailerWorker
 
   def self.status(task_key)
   	Sidekiq.redis do |conn|
-      status = conn.get(task_key)
+      result = conn.get(task_key)
+      result.nil? ? nil : JSON.parse(conn.get(task_key))
     end
-    return status
   end
 
   def perform(email_params, task_key)
     begin
+      result = {}
       ActiveRecord::Base.transaction do
-        EmailLogic.create_email(email_params)
+        email = EmailLogic.create_email(email_params)
+        politician_ids = email.politician_ids
+        result = email.attributes
+        result[:politician_ids] = politician_ids
         PoliticianMailer.send_politician_email(email_params).deliver
       end
       Sidekiq.redis do |conn|
-        conn.set(task_key, { status: 'success' }.to_json)
+        conn.set(task_key, { status: 'success', result: result }.to_json)
         conn.expire(task_key, 1.hours)
       end
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     		get 'search'
     	end
     end
+    resources :workers, only: [:show]
   end
 
   root 'angular#root'

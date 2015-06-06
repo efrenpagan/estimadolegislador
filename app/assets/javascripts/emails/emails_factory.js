@@ -29,7 +29,7 @@ app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansServ
 	    deferred.resolve(data);
 	  }).
 	  error(function(data, status, headers, config) {
-	    deferred.reject();
+	    deferred.reject(data);
 	  });
 		return deferred.promise;
 	};
@@ -39,6 +39,18 @@ app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansServ
 		$http.get('/api/emails/'+id+'.json').
 		success(function(data){
 			angular.copy(data, o.email);
+	    deferred.resolve(data);
+		}).
+		error(function(data, status, headers, config) {
+	    deferred.reject();
+	  });
+		return deferred.promise;
+	};
+
+	o.getStatus = function(id){
+		var deferred = $q.defer();
+		$http.get('/api/workers/'+id+'.json').
+		success(function(data){
 	    deferred.resolve(data);
 		}).
 		error(function(data, status, headers, config) {
