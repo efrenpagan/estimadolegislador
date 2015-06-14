@@ -1,9 +1,9 @@
 <h1>PoliticianMailer#send_politician_email</h1>
 
-<%= @email_params['message'].html_safe %>
+<%= @email_params['message_html'].html_safe %>
 
 --------------
 
 <br>
 
-<%= Nokogiri::HTML(@email_params['message']).text %>
+<%= Nokogiri::HTML(@email_params['message_html']).text %>

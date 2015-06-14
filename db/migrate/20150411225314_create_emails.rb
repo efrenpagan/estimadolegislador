@@ -4,7 +4,8 @@ class CreateEmails < ActiveRecord::Migration
       t.string :from_name
       t.string :from_email
       t.string :subject
-      t.string :message
+      t.text :message_html
+      t.text :message_text
       t.boolean :is_public
       t.string :short_url
 
