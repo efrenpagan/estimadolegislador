@@ -1,4 +1,4 @@
-var app = angular.module('atentamente', ['ui.router', 'templates', 'angularFileUpload', 'ngQuill', 'ngSanitize', 'angularMoment', 'ui.bootstrap', 'ngStorage'])
+var app = angular.module('atentamente', ['ui.router', 'templates', 'angularFileUpload', 'ngSanitize', 'angularMoment', 'ui.bootstrap', 'ngStorage', 'textAngular'])
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider){

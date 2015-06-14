@@ -6,13 +6,13 @@
 //= require jquery
 //= require bootstrap
 //= require bootstrap-sidebar
-//= require ngquill-custom
-//= require quill
 //= require moment
 //= require angular-moment
-//= require angular-sanitize
 //= require moment/locale/es
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require ngStorage
+//= require textAngular/dist/textAngular-rangy.min
+//= require textAngular/dist/textAngular-sanitize.min
+//= require textAngular/dist/textAngular.min
 
 //= require_tree .

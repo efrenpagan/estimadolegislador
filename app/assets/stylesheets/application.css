@@ -2,7 +2,7 @@
  *= require bootstrap/dist/css/bootstrap
  *= require bootstrap-sidebar
  *= require font-awesome/css/font-awesome
- *= require quill/dist/quill.snow
+ *= require textAngular/dist/textAngular
  *= require_tree .
  *= require_self
  */
@@ -52,28 +52,6 @@
 .search-subtitle{
 	font-size: 12px;
 }
-
-.ql-container{
-	height: 250px !important;
-}
-
-.advanced-wrapper{
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-.ql-toolbar{
-	border-bottom: 1px solid #ccc;
-}
-
-.ql-format-group{
-	background-color: white;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-/*.ql-editor{
-	min-height: 200px;
-}*/
 
 /* override angular-ui modal backdrop */
 .modal-backdrop{
