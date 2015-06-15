@@ -5,6 +5,7 @@ class Email < ActiveRecord::Base
 	validate :email_fields
 
 	after_create :create_short_url
+	after_create :create_text_version
 
 	default_scope { order("created_at") }
 
@@ -19,6 +20,10 @@ class Email < ActiveRecord::Base
 
 	def create_short_url
 		EmailLogic.create_short_url(self)
+	end
+
+	def create_text_version
+		update_attribute(:message_text, EmailLogic.html_to_text(self.message_html))
 	end
 
 end

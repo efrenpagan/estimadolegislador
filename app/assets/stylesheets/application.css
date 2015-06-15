@@ -53,6 +53,10 @@
 	font-size: 12px;
 }
 
+.message_text{
+  white-space: pre;
+}
+
 /* override angular-ui modal backdrop */
 .modal-backdrop{
   position: fixed;
