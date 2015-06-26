@@ -11,17 +11,25 @@
  @import url(http://fonts.googleapis.com/css?family=Raleway:500);
 
  body{
- 	background-color: #f8f8f8;
  	font-family: 'Raleway', sans-serif;
  }
 
  nav{
- 	background-color: #E8EDE3;
+ 	background-color: black;
+  font-size: 16px;
  }
 
- .navbar-brand{
- 	font-family: 'Nothing You Could Do', cursive;
- 	font-size: 25px;
+ .navbar-nav > li > a{
+   color: white;
+ }
+
+ .navbar-nav > li > a:hover, .navbar-nav > li > a:focus{
+   color: white;
+   background-color: transparent;
+ }
+
+ .sidebar{
+   padding-top: 20px;
  }
 
 .container-fluid{
@@ -55,6 +63,16 @@
 
 .message_text{
   white-space: pre;
+}
+
+.compose-email-btn{
+  position: relative;
+  top: 15%;
+  transform: translateY(-15%);
+}
+
+.right{
+  float: right;
 }
 
 /* override angular-ui modal backdrop */

@@ -7,16 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Estimado Legislador</a>
+      <a class="navbar-brand" href="#"><%= image_tag("att_logo_nav.png", size: "70x25", alt: "Atentamente.org") %></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Inicio</a></li>
-        <li><a href="#about">Representantes</a></li>
-        <li><a href="#contact">Senadores</a></li>
-        <li><a href="#contact">Mensajes Publicos</a></li>
-      </ul>
+      <ul class="nav navbar-nav"></ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="politicians.index">Contactos</a></li>
+        <li><a ui-sref="emails.index">Mensajes</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
