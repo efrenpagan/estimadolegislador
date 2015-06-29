@@ -25,3 +25,5 @@
 
 # Ignore Paperclip images directory
 /public/system
+
+/keys
