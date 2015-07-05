@@ -11,7 +11,7 @@
 //= require angular-moment
 //= require moment/locale/es
 //= require angular-bootstrap/ui-bootstrap-tpls
-//= require ngStorage
+//= require ngstorage/ngStorage
 //= require textAngular/dist/textAngular-rangy.min
 //= require textAngular/dist/textAngular-sanitize.min
 //= require textAngular/dist/textAngular.min
