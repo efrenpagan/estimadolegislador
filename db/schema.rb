@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150525050708) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "emails", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+  create_table "emails", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "from_name"
     t.string   "from_email"
     t.string   "subject"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150525050708) do
     t.datetime "updated_at"
   end
 
-  create_table "politicians", force: true do |t|
+  create_table "politicians", force: :cascade do |t|
     t.string   "name"
     t.string   "position"
     t.string   "description"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150525050708) do
     t.datetime "image_updated_at"
   end
 
-  create_table "recipients", force: true do |t|
+  create_table "recipients", force: :cascade do |t|
     t.uuid     "email_id"
     t.integer  "politician_id"
     t.datetime "created_at"
