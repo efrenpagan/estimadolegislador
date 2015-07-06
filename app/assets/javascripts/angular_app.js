@@ -1,9 +1,29 @@
-var app = angular.module('atentamente', ['ui.router', 'templates', 'angularFileUpload', 'ngSanitize', 'angularMoment', 'ui.bootstrap', 'ngStorage', 'textAngular', 'ngAnimate'])
+var app = angular.module('atentamente', ['ui.router', 'templates', 'angularFileUpload', 'ngSanitize', 'angularMoment', 'ui.bootstrap', 'ngStorage', 'textAngular', 'ngAnimate', 'Devise'])
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider){
 		$locationProvider.html5Mode(true);
 		$stateProvider
+			.state('login', {
+				url: '/login',
+				templateUrl: 'auth/_login.html',
+				controller: 'AuthController',
+				onEnter: ['$state', 'Auth', function($state, Auth) {
+	        Auth.currentUser().then(function (){
+	          $state.go('politicians.index');
+	        })
+	      }]
+			})
+			.state('register', {
+				url: '/register',
+				templateUrl: 'auth/_register.html',
+				controller: 'AuthController',
+				onEnter: ['$state', 'Auth', function($state, Auth) {
+	        Auth.currentUser().then(function (){
+	          $state.go('politicians.index');
+	        })
+	      }]
+			})
 			.state('politicians', {
 				abstract: true,
 				url: '/politicians',

@@ -25,6 +25,7 @@
     "angular-bootstrap": "~0.12.1",
     "ngstorage": "~0.3.4",
     "textAngular": "~1.4.1",
-    "angular-animate": "~1.4.1"
+    "angular-animate": "~1.4.1",
+    "angular-devise": "~1.1.0"
   }
 }

@@ -3,6 +3,7 @@
 //= require angular-ui-router
 //= require angular-animate
 //= require ng-file-upload
+//= require angular-devise
 //= require angular_app
 //= require jquery
 //= require bootstrap
