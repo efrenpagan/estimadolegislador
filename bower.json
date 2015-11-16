@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.0",
+    "angular": "~1.4.7",
     "angular-ui-router": "~0.2.13",
     "bootstrap": "~3.3.1",
     "ng-file-upload": "~3.2.4",
