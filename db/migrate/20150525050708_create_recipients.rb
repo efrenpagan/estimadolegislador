@@ -1,8 +1,8 @@
 class CreateRecipients < ActiveRecord::Migration
   def change
     create_table :recipients do |t|
-      t.uuid :email_id
-      t.integer :politician_id
+      t.uuid :message_id
+      t.integer :contact_id
 
       t.timestamps
     end

@@ -2,7 +2,7 @@ class MailerWorker
   include Sidekiq::Worker
 
   def self.create(email_params)
-  	task_key = "create_email:#{Time.now.to_i}:#{SecureRandom.hex(6)}"
+  	task_key = "create_message:#{Time.now.to_i}:#{SecureRandom.hex(6)}"
   	Sidekiq.redis do |conn|
       conn.set(task_key, { status: 'pending' }.to_json)
       conn.expire(task_key, 1.day)
@@ -22,7 +22,7 @@ class MailerWorker
     begin
       result = {}
       ActiveRecord::Base.transaction do
-        email = EmailLogic.create_email(email_params)
+        email = MessageLogic.create_message(email_params)
         politician_ids = email.politician_ids
         result = email.attributes
         result[:politician_ids] = politician_ids

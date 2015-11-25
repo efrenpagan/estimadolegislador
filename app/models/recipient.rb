@@ -1,4 +1,4 @@
 class Recipient < ActiveRecord::Base
 	belongs_to :email
-	belongs_to :politician
+	belongs_to :contact
 end

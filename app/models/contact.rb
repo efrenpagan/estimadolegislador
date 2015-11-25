@@ -1,6 +1,6 @@
 require 'elasticsearch/model'
 
-class Politician < ActiveRecord::Base
+class Contact < ActiveRecord::Base
 	include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
@@ -10,22 +10,22 @@ class Politician < ActiveRecord::Base
 	has_attached_file :image
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-	validates :position, inclusion: { in: %w[governor senator representative mayor] }
+	validates :position_type, inclusion: { in: %w[governor senator representative mayor] }
 
 	def governor?
-		position == 'governor'
+		position_type == 'governor'
 	end
 
 	def senator?
-		position == 'senator'
+		position_type == 'senator'
 	end
 
 	def representative?
-		position == 'representative'
+		position_type == 'representative'
 	end
 
 	def mayor?
-		position == 'mayor'
+		position_type == 'mayor'
 	end
 
 	settings index: {
@@ -46,10 +46,10 @@ class Politician < ActiveRecord::Base
 
 end
 
-Politician.__elasticsearch__.client.indices.delete index: Politician.index_name rescue nil
+Contact.__elasticsearch__.client.indices.delete index: Contact.index_name rescue nil
 
-Politician.__elasticsearch__.client.indices.create \
-  index: Politician.index_name,
-  body: { settings: Politician.settings.to_hash, mappings: Politician.mappings.to_hash }
+Contact.__elasticsearch__.client.indices.create \
+  index: Contact.index_name,
+  body: { settings: Contact.settings.to_hash, mappings: Contact.mappings.to_hash }
 
-Politician.import
+Contact.import

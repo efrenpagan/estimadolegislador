@@ -1,11 +1,11 @@
-class CreateEmails < ActiveRecord::Migration
+class CreateMessages < ActiveRecord::Migration
   def change
-    create_table :emails, id: :uuid do |t|
+    create_table :messages, id: :uuid do |t|
       t.string :from_name
       t.string :from_email
       t.string :subject
-      t.text :message_html
-      t.text :message_text
+      t.text :body_html
+      t.text :body_text
       t.boolean :is_public
       t.string :short_url
 

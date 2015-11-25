@@ -17,25 +17,13 @@ ActiveRecord::Schema.define(version: 20150706021528) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "emails", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "from_name"
-    t.string   "from_email"
-    t.string   "subject"
-    t.text     "message_html"
-    t.text     "message_text"
-    t.boolean  "is_public"
-    t.string   "short_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "politicians", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.string   "name"
-    t.string   "position"
-    t.string   "description"
-    t.string   "role"
+    t.string   "position_type"
+    t.string   "position_description"
+    t.string   "internal_position"
     t.string   "email"
-    t.string   "political_party"
+    t.string   "twitter_handle"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -44,9 +32,21 @@ ActiveRecord::Schema.define(version: 20150706021528) do
     t.datetime "image_updated_at"
   end
 
+  create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "from_name"
+    t.string   "from_email"
+    t.string   "subject"
+    t.text     "body_html"
+    t.text     "body_text"
+    t.boolean  "is_public"
+    t.string   "short_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "recipients", force: :cascade do |t|
-    t.uuid     "email_id"
-    t.integer  "politician_id"
+    t.uuid     "message_id"
+    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

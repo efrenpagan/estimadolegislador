@@ -1,18 +1,13 @@
-module EmailLogic
+module MessageLogic
   extend self
 
-  def send_politician_email_async(email_params)
-    MailerWorker.create(email_params)
+  def send_message(message_params)
+    MailerWorker.create(message_params)
   end
 
-  def create_email(email_params)
-  	email_params = email_params.except(:from_name, :message) unless email_params[:is_public]
-  	Email.create(email_params)
-  end
-
-  def create_short_url(email)
-  	bitly = Bitly.client.shorten(URI::encode("http://#{Global.config.domain}/emails/#{email.id}"))
-  	email.update(short_url: bitly.short_url)
+  def create_short_url(message)
+  	bitly = Bitly.client.shorten(URI::encode("http://#{Global.config.domain}/messages/#{message.id}"))
+  	message.update(short_url: bitly.short_url)
   end
 
   def html_to_text(html)

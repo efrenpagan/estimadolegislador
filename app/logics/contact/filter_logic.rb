@@ -1,8 +1,8 @@
-module Politician::FilterLogic
+module Contact::FilterLogic
 	extend self
 
 	def search(query, filtered_ids)
-		params = { 
+		params = {
 			query: {
 		    filtered: {
 		      query: {
@@ -21,6 +21,6 @@ module Politician::FilterLogic
 		  }
 		}
 
-		Politician.search(params).records
+		Contact.search(params).records
 	end
 end

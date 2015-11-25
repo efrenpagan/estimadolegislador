@@ -1,6 +1,6 @@
-class Email < ActiveRecord::Base
+class Message < ActiveRecord::Base
 	has_many :recipients
-	has_many :politicians, through: :recipients
+	has_many :contacts, through: :recipients
 
 	validate :email_fields
 
@@ -19,11 +19,11 @@ class Email < ActiveRecord::Base
 	end
 
 	def create_short_url
-		EmailLogic.create_short_url(self)
+		MessageLogic.create_short_url(self)
 	end
 
 	def create_text_version
-		update_attribute(:message_text, EmailLogic.html_to_text(self.message_html))
+		update_attribute(:message_text, MessageLogic.html_to_text(self.message_html))
 	end
 
 end
