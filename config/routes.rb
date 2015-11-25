@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   namespace :api do
-    resources :emails
-    resources :politicians do
+    resources :messages
+    resources :contacts do
     	collection do
     		get 'search'
     	end

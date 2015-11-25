@@ -3,7 +3,7 @@ class MessageMailer < ActionMailer::Base
 
   def send_message(message_params)
   	@message_params = message_params
-    @politicians = Contact.find(@message_params['contact_ids'])
+    @contacts = Contact.find(@message_params['contact_ids'])
     mail(to: "roberto@devstud.io", subject: @message_params['subject'] )
   end
 end
