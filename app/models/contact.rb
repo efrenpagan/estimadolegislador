@@ -10,7 +10,9 @@ class Contact < ActiveRecord::Base
 	has_attached_file :image
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-	validates :position_type, inclusion: { in: %w[governor senator representative mayor] }
+	POSITION_TYPES = %w[governor senator representative mayor]
+
+	validates :position_type, inclusion: { in: POSITION_TYPES }
 
 	def governor?
 		position_type == 'governor'
@@ -52,4 +54,4 @@ Contact.__elasticsearch__.client.indices.create \
   index: Contact.index_name,
   body: { settings: Contact.settings.to_hash, mappings: Contact.mappings.to_hash }
 
-Contact.import
+Contact.__elasticsearch__.import

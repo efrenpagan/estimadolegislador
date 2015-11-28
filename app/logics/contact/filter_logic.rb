@@ -21,6 +21,6 @@ module Contact::FilterLogic
 		  }
 		}
 
-		Contact.search(params).records
+		Contact.__elasticsearch__.search(params).records
 	end
 end

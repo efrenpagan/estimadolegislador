@@ -80,3 +80,4 @@
 # 	Politician.create(name: name, position: 'senator', role: role, description: 'Senador', political_party: political_party, email: email)
 #
 # end
+User.create!(email: 'admin@atentamente.org', password: 'password', password_confirmation: 'password')

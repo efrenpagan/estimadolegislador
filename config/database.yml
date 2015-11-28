@@ -21,6 +21,7 @@ default: &default
 
 development:
   <<: *default
+  database: atentamente_development
 
 test:
   <<: *default
