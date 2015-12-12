@@ -1,50 +1,20 @@
-app.controller('PoliticiansController', ['$scope', '$state', '$filter', 'politiciansFactory',
-	function($scope, $state, $filter, politiciansFactory) {
-		$scope.politicians = politiciansFactory.politicians;
-		$scope.politician = politiciansFactory.politician;
-		$scope.recipients = politiciansFactory.recipients;
+(function() {
+  'use strict'
 
-		$scope.updatePolitician = function(params){
-			politiciansFactory.update(params).
-			then(function(data){
-				console.log(data);
-			}).
-			catch(function(data){
-				console.error(data);
-			});
-		};
+  angular
+	  .module('atentamente')
+	  .controller('ContactsController', ContactsController)
 
-		$scope.createPolitician = function(params){
-			politiciansFactory.create(params).
-			then(function(data){
-				console.log(data);
-			}).
-			catch(function(data){
-				console.error(data);
-			});
-		};
+  function ContactsController($state, contacts) {
+    var vm = this
+    vm.contacts = contacts.contacts
 
-		$scope.addRecipient = function(politician){
-			politiciansFactory.addRecipient(politician);
-		};
+		vm.addRecipient = function(contact) {
+			contacts.addRecipient(contact)
+		}
 
-		$scope.removeRecipient = function(politician){
-			politiciansFactory.removeRecipient(politician);
-		};
-
-		$scope.preview_image = function(file){
-			if (!file.length) return;
-			$scope.politician.image_preview = URL.createObjectURL(file[0]);
-   	};
-
-}]);
-
-app.filter('getIds', function(){
-	return function(collection){
-		var result = [];
-		collection.forEach(function(item){
-			result.push(item.id)
-		});
-		return result;
-	};
-});
+    vm.removeRecipient = function(contact) {
+			contacts.removeRecipient(contact)
+		}
+	}
+})();

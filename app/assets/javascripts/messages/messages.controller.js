@@ -1,42 +1,29 @@
-app.controller('EmailsController', ['$scope', '$state', '$timeout', '$modal', 'emailsFactory', 'modalFactory',
-	function($scope, $state, $timeout, $modal, emailsFactory, modalFactory) {
-		$scope.emails = emailsFactory.emails;
-		$scope.email = emailsFactory.email;
+(function() {
+  'use strict'
 
-		$scope.sendEmail = function(email){
-			$scope.status = 'pending';
-			modalFactory.open($scope);
-			emailsFactory.sendEmail(email).
-			then(function(data){
-				getStatus(data.task_key);
-			}).
-			catch(function(data){
-				$scope.status = 'error';
-				$timeout(modalFactory.close, 3000);
-				console.error(data);
-			});
-		};
+  angular
+	  .module('atentamente')
+	  .controller('MessagesController', MessagesController)
 
-		getStatus = function(task_key){
-			emailsFactory.getStatus(task_key).
-			then(function(data){
-				if(data.status == 'pending'){
-					$timeout(function(){ getStatus(task_key) } , 3000);
-				}
-				else {
-					if(data.status == 'success'){
-						$scope.email = data.result;
-						console.log('Success');
-					}
-					else if(data.status == 'error'){
-						console.log('Error');
-					}
-					else {
-						console.log('Troleo full');
-					}
-					$scope.status = data.status;
-				}
-			});
-		};
+  function MessagesController(messages, contacts) {
+    var vm = this
+    vm.message = messages.message
+    vm.messages = messages.messages
+    vm.contacts = contacts.contacts
 
-}]);
+    vm.tinymceOptions = {
+      menubar: false,
+      height: 300,
+      toolbar: 'undo redo | bold italic | bullist numlist outdent indent',
+      statusbar: false
+    }
+
+    vm.sendMessage = function() {
+      vm.message.contact_ids = contacts.recipient_ids
+      messages.sendMessage().then(function (message) {
+        console.log(message)
+        console.log(vm.message)
+      })
+		}
+	}
+})()

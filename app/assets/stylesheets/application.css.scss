@@ -2,7 +2,6 @@
  *= require bootstrap/dist/css/bootstrap
  *= require bootstrap-sidebar
  *= require font-awesome/css/font-awesome
- *= require textAngular/dist/textAngular
  *= require_tree .
  *= require_self
  */
@@ -55,7 +54,7 @@
 	border-right: 1px solid;
 }
 
-.img-politician{
+.img-contact{
 	width: 100%;
 	height: auto;
 }

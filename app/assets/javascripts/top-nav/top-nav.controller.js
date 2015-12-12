@@ -1,22 +1,9 @@
-app.controller('NavController', ['$scope', 'Auth',
-	function($scope, Auth) {
-    $scope.signedIn = Auth.isAuthenticated;
-    $scope.logout = Auth.logout;
+(function() {
+  'use strict';
 
-    Auth.currentUser().then(function (user){
-      $scope.user = user;
-    });
+  angular
+	  .module('atentamente')
+	  .controller('TopNavController', TopNavController);
 
-    $scope.$on('devise:new-registration', function (e, user){
-      $scope.user = user;
-    });
-
-    $scope.$on('devise:login', function (e, user){
-      $scope.user = user;
-    });
-
-    $scope.$on('devise:logout', function (e, user){
-      $scope.user = {};
-    });
-
-}]);
+  function TopNavController() {}
+})();

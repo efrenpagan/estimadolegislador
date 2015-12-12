@@ -1,40 +1,29 @@
-app.controller('RecipientsController', ['$scope', '$filter', '$state', 'recipientsFactory',
-	function($scope, $filter, $state, recipientsFactory) {
-		$scope.$state = $state;
-		$scope.recipients = recipientsFactory.recipients;
-		$scope.non_recipients = recipientsFactory.non_recipients;
+(function() {
+  'use strict'
 
-		$scope.add = function(recipient){
-			recipientsFactory.add(recipient);
-		};
+  angular
+	  .module('atentamente')
+	  .controller('RecipientsController', RecipientsController)
 
-		$scope.remove = function(recipient){
-			recipientsFactory.remove(recipient);
-		};
+  function RecipientsController(contacts) {
+    var vm = this
+    vm.contacts = contacts.contacts
 
-		$scope.searchFilter = function(q){
-			return recipientsFactory.search(q).then(function(data){
-				console.log(data);
-				return data;
-			});
-		};
+		vm.addRecipient = function(contact) {
+			contacts.addRecipient(contact)
+		}
 
-		$scope.onSelect = function(item, model, label){
-			var selection = $filter('getByProperty')('id', item.id, $scope.non_recipients)
-			if (selection) $scope.add(selection);
-		};
+    vm.removeRecipient = function(contact) {
+			contacts.removeRecipient(contact)
+		}
 
-}]);
+		vm.searchFilter = function(query) {
+      return contacts.search(query)
+		}
 
-app.filter('getByProperty', function(){
-	return function(property, value, collection){
-		var result;
-		collection.some(function(item){
-			if (item[property] == value){
-				result = item;
-				return true;
-			};
-		});
-		return result;
-	};
-});
+		vm.onSelect = function(contact){
+      contacts.addRecipient(contact)
+      vm.searchBox = ''
+		}
+	}
+})()

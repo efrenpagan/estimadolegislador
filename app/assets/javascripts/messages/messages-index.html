@@ -1,11 +1,24 @@
 <div class="row">
   <div class="col-md-9 col-md-offset-1">
+    <h3>Mensajes</h3>
   	<table class="table table-hover">
-  		<tr ng-repeat="email in emails">
+  		<tr ng-repeat="message in vm.messages">
   			<td>
           <table>
-            <tr><td><h3><a ui-sref="emails.show({ id: email.id })">{{email.subject}}</a></h3></td><td><span am-time-ago="email.created_at"></span></td></tr>
-            <tr><td><h5>{{email.politician.name}}</h5></td></tr>
+            <tr>
+              <td>
+                <h3><a ui-sref="messages.show({ id: message.id })">{{message.subject}}</a></h3>
+              </td>
+              <td><span am-time-ago="message.created_at"></span></td>
+            </tr>
+            <tr>
+              <td>{{ message.body_text }}</td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Dirigido a: <data-recipient-names collection="message.contacts"></h5>
+              </td>
+            </tr>
           </table>
   			</td>
   		</tr>

@@ -1,19 +1,27 @@
-<div ng-controller="RecipientsController" class="col-xs-6 col-sm-3 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show">
+<div ng-controller="RecipientsController as vm" class="col-xs-6 col-sm-3 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show">
   <div>
     <h4>Recipientes</h4>
   </div>
   <div class="form-group">
-    <input type="text" ng-model="searchField" placeholder="Buscar contactos" typeahead="result as result.name for results in searchFilter($viewValue)" typeahead-template-url="recipients/search_results.html" typeahead-on-select="onSelect($item, $model, $label); searchField = '';" class="form-control">
+    <input
+      type="text"
+      ng-model="vm.searchBox"
+      placeholder="Añadir contacto"
+      uib-typeahead="result as result.name for result in vm.searchFilter($viewValue)"
+      typeahead-on-select="vm.onSelect($item)"
+      typeahead-template-url="recipients/recipients.search-results.html"
+      class="form-control"
+    >
   </div>
   <table class="table">
-    <tr ng-repeat="recipient in recipients" class="animate-repeat">
+    <tr ng-repeat="contact in vm.contacts | recipientsFilter" class="animate-repeat">
       <td>
-        <img ng-src="{{recipient.image}}" class="img-rounded img-recipient"/>
+        <img ng-src="{{contact.image}}" class="img-rounded img-contact"/>
       </td>
       <td>
-        <p> Hon. {{recipient.name}} </p>
+        <p> Hon. {{contact.name}} </p>
       <td>
-        <p><a ng-click="remove(recipient)"><i class="fa fa-times"></i></a></p>
+        <p><a ng-click="vm.removeRecipient(contact)"><i class="fa fa-times"></i></a></p>
       </td>
     </tr>
   </table>

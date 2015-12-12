@@ -1,63 +1,74 @@
-app.factory('emailsFactory', ['$http', '$q', '$sessionStorage', 'PoliticiansService', 'recipientsFactory', function($http, $q, $sessionStorage, PoliticiansService, recipientsFactory){
+(function() {
+  'use strict'
 
-	$sessionStorage.recipients_ids = $sessionStorage.recipients_ids || [];
+  angular
+	  .module('atentamente')
+	  .factory('messages', messages)
 
-	var o = {
-		email: {
-			politician_ids: recipientsFactory.recipients_ids
-		},
-		emails: []
-	};
+	function messages($http, $q, $timeout, messageStatus) {
+    var service = {
+			message: {
+        status: 'pending'
+      },
+      messages: [],
+      fetch: fetch,
+      find: find,
+			sendMessage: sendMessage
+    }
 
-	o.index = function(){
-		var deferred = $q.defer();
-		$http.get('/api/emails.json').
-		success(function(data){
-			angular.copy(data, o.emails);
-	    deferred.resolve(data);
-		}).
-		error(function(data, status, headers, config) {
-	    deferred.reject();
-	  });
-		return deferred.promise;
-	};
+    return service
 
-	o.sendEmail = function(email){
-		var deferred = $q.defer();
-		$http.post('/api/emails.json', { email: email }).
-	  success(function(data, status, headers, config) {
-	    deferred.resolve(data);
-	  }).
-	  error(function(data, status, headers, config) {
-	    deferred.reject(data);
-	  });
-		return deferred.promise;
-	};
+    function sendMessage() {
+      messageStatus.open(service.message)
+      var success = function(resp) {
+        return monitorStatus(resp.data.task_key).then(function (message) {
+          angular.copy(message, service.message)
+          return message
+        })
+      }
+      var error = function(err) { console.error(err) }
+      return $http.post('/api/messages.json', { message: service.message }).then(success, error)
+    }
 
-	o.find = function(id){
-		var deferred = $q.defer();
-		$http.get('/api/emails/'+id+'.json').
-		success(function(data){
-			angular.copy(data, o.email);
-	    deferred.resolve(data);
-		}).
-		error(function(data, status, headers, config) {
-	    deferred.reject();
-	  });
-		return deferred.promise;
-	};
+    function monitorStatus(task_key) {
+      var deferred = $q.defer()
+      var pollStatus = function() {
+        var success = function (resp) {
+          switch(resp.data.status) {
+            case 'success':
+              deferred.resolve(resp.data.result)
+              break
+            case 'error':
+              deferred.reject(resp)
+              break
+          }
+        }
+        var error = function (resp) {
+          deferred.reject(resp)
+        }
+        $http.get('/api/workers/'+task_key+'.json').then(success, error)
+      }
+      $timeout(pollStatus, 3000)
+      return deferred.promise
+    }
 
-	o.getStatus = function(id){
-		var deferred = $q.defer();
-		$http.get('/api/workers/'+id+'.json').
-		success(function(data){
-	    deferred.resolve(data);
-		}).
-		error(function(data, status, headers, config) {
-	    deferred.reject();
-	  });
-		return deferred.promise;
-	};
+    function fetch() {
+      var success = function (resp) {
+        angular.copy(resp.data, service.messages)
+        return resp.data
+      }
+      var error = function(err) { console.log(err) }
+      return $http.get('/api/messages.json').then(success, error)
+    }
 
-	return o;
-}]);
+    function find(id) {
+      var success = function(resp) {
+        console.log(resp.data)
+        angular.copy(resp.data, service.message)
+        return resp.data
+      }
+      var error = function(err) { console.log(err) }
+      return $http.get('/api/messages/'+id+'.json').then(success, error)
+    }
+	}
+})()

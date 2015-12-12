@@ -5,17 +5,12 @@
   			<td>
           <table>
             <tr>
-            	<td><h2>{{email.subject}}</h2></td>
-            	<td><span>{{email.created_at | amDateFormat:'MMMM D YYYY, h:mm:ss a'}}</span></td>
+            	<td><h2>{{vm.message.subject}}</h2></td>
+            	<td><span>{{vm.message.created_at | amDateFormat:'MMMM D YYYY, h:mm:ss a'}}</span></td>
             </tr>
             <tr>
             	<td>
-            		<div ng-bind-html="email.message_html"></div>
-            	</td>
-            </tr>
-            <tr>
-            	<td>
-                <div class="message_text">{{email.message_text}}</div>
+            		<div ng-bind-html="vm.message.body_html"></div>
             	</td>
             </tr>
           </table>

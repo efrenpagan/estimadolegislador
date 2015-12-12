@@ -2,9 +2,6 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-animate
-//= require ng-file-upload
-//= require angular-devise
-//= require angular_app
 //= require jquery
 //= require bootstrap
 //= require bootstrap-sidebar
@@ -13,8 +10,9 @@
 //= require moment/locale/es
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require ngstorage/ngStorage
-//= require textAngular/dist/textAngular-rangy.min
-//= require textAngular/dist/textAngular-sanitize.min
-//= require textAngular/dist/textAngular.min
+//= require angular-sanitize
+//= require tinymce-dist/tinymce
+//= require angular-ui-tinymce/src/tinymce
+//= require atentamente
 
 //= require_tree .

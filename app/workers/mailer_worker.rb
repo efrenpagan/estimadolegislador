@@ -21,12 +21,12 @@ class MailerWorker
   def perform(message_params, task_key)
     begin
       result = {}
+      message = Message.create(message_params)
       ActiveRecord::Base.transaction do
-        message = MessageLogic.create_message(message_params)
-        contact_ids = message.contact_ids
+        MessageMailer.send_message(message)
+        message.update(status: 'success')
         result = message.attributes
-        result[:contact_ids] = contact_ids
-        MessageMailer.send_message(message_params).deliver
+        result[:contact_ids] = message.contact_ids
       end
       Sidekiq.redis do |conn|
         conn.set(task_key, { status: 'success', result: result }.to_json)

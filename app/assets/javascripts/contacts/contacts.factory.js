@@ -1,77 +1,59 @@
-app.factory('politiciansFactory', ['$http', '$q', '$upload', '$filter', 'PoliticiansService', 'recipientsFactory', function($http, $q, $upload, $filter, PoliticiansService, recipientsFactory){
+(function() {
+  'use strict'
 
-	var o = {
-		politicians: recipientsFactory.non_recipients,
-		politician: {},
-		search_results: []
-	};
+  angular
+	  .module('atentamente')
+	  .factory('contacts', contacts)
 
-	o.find = function(id){
-		var deferred = $q.defer();
-		PoliticiansService.find(id).
-		then(function(data){
-			data.image_preview = data.image;
-			angular.copy(data, o.politician);
-	    deferred.resolve(data);
-		}).
-		catch(function(data){
-			deferred.reject();
-		});
-		return deferred.promise;
-	};
+	function contacts($http, $sessionStorage) {
+    var service = {
+      contacts: [],
+      fetch: fetch,
+      addRecipient: addRecipient,
+      removeRecipient: removeRecipient,
+      search: search,
+      recipient_ids: []
+    }
 
-	o.update = function(params){
-		var deferred = $q.defer();
-		$upload.upload({
-      url: '/api/politicians/'+params.id+'.json',
-      method: 'PUT',
-      fields: PoliticiansService.params('politician', params),
-      file: params.image,
-      fileFormDataName: 'politician[image]'
-    }).
-    success(function (data, status, headers, config) {
-    	angular.copy(data, o.politician);
-      deferred.resolve(data);
-    })
-    .error(function (data, status, headers, config) {
-			deferred.reject(status);
-		})
-    return deferred.promise;
-	};
+    initialize()
 
-	o.create = function(params){
-		var deferred = $q.defer();
-		$upload.upload({
-      url: '/api/politicians.json',
-      method: 'POST',
-      fields: PoliticiansService.params('politician', params),
-      file: params.image,
-      fileFormDataName: 'politician[image]'
-    }).
-    success(function (data, status, headers, config) {
-    	angular.copy(data, o.politician);
-      deferred.resolve(data);
-    }).
-    error(function (data, status, headers, config) {
-			deferred.reject(status);
-		})
-    return deferred.promise;
-	};
-	
-	o.reset = function(){
-		var deferred = $q.defer();
-    angular.copy({}, o.politician);
-    deferred.resolve({});
-    return deferred.promise;
-	};
+    return service
 
-	o.addRecipient = function(recipient){
-		recipientsFactory.add(recipient);
-	};
+    function fetch() {
+      var success = function (resp) {
+        angular.copy(resp.data, service.contacts)
+        return resp.data
+      }
+      var error = function(err) { console.log(err) }
+      return $http.get('/api/contacts.json').then(success, error)
+    }
 
-	o.removeRecipient = function(recipient){
-		recipientsFactory.remove(recipient);
-	};
+    function addRecipient(contact) {
+      service.recipient_ids.indexOf(contact.id) < 0 ?
+        service.recipient_ids.push(contact.id) : console.error(contact.name + ' ya está incluido como recipiente')
+  	}
 
-	return o;
-}]);
+    function removeRecipient(contact) {
+      var index = service.recipient_ids.indexOf(contact.id)
+      index >= 0 ?
+        service.recipient_ids.splice(index, 1) : console.error(contact.name + ' no está incluido como recipiente')
+  	}
+
+    function search(query) {
+      var success = function(resp) { return resp.data }
+      var error = function(err) { console.log(err) }
+      return $http.get(
+        '/api/contacts/search.json', {
+          params: {
+            query: query,
+            filtered_ids: JSON.stringify(service.recipient_ids)
+          }
+        }).then(success, error)
+    }
+
+    function initialize() {
+      $sessionStorage.recipient_ids = $sessionStorage.recipient_ids || []
+      service.recipient_ids = $sessionStorage.recipient_ids
+    }
+	}
+})()

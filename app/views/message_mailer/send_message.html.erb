@@ -1,9 +1,0 @@
-<h1>MessageMailer#send_message</h1>
-
-<%= @message_params['message_html'].html_safe %>
-
---------------
-
-<br>
-
-<%= Nokogiri::HTML(@message_params['message_html']).text %>
