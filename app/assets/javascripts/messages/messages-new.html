@@ -3,19 +3,19 @@
   <div class="col-md-9 col-md-offset-3">
   	<form novalidate>
   		<div class="form-group">
-			  <label for="name">Nombre</label>
+			  <label for="name">Nombre</label><span class="message-error"> {{ vm.message.errors.from_name }}</span>
 			  <input type="text" class="form-control" ng-model="vm.message.from_name">
 			</div>
 			<div class="form-group">
-			  <label for="email">Email</label>
+			  <label for="email">Email</label><span class="message-error"> {{ vm.message.errors.from_email }}</span>
 			  <input type="email" class="form-control" ng-model="vm.message.from_email">
 			</div>
 			<div class="form-group">
-			  <label for="subject">Asunto</label>
+			  <label for="subject">Asunto</label><span class="message-error"> {{ vm.message.errors.subject }}</span>
 			  <input type="text" class="form-control" ng-model="vm.message.subject">
 			</div>
 			<div class="form-group">
-			  <label>Mensaje</label>
+			  <label>Mensaje</label><span class="message-error"> {{ vm.message.errors.body_html }}</span>
 				<input type="text" class="form-control" ng-model="vm.message.body_html" ui-tinymce="vm.tinymceOptions">
 			</div>
 			<div class="form-group">

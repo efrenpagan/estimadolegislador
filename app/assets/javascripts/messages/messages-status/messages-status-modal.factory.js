@@ -13,7 +13,7 @@
     return service
 
     function open(message) {
-      $uibModal.open({
+      return $uibModal.open({
         animation: true,
         template: '<message-status/>',
         controller: function($scope, $uibModalInstance) {

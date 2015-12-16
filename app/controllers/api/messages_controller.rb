@@ -16,12 +16,12 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    message = Message.new(message_params)
-    if message.valid?
+    @message = Message.new(message_params)
+    if @message.save
       task_key = MessageLogic.send_message(message_params)
-      render json: { task_key: task_key }, status: :ok
+      render json: { task_key: task_key, message: @message }, status: :ok
     else
-      render json: message.errors, status: :unprocessable_entity
+      render json: { errors: @message.errors, message: @message } , status: :unprocessable_entity
     end
   end
 

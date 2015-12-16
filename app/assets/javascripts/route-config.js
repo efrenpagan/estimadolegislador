@@ -29,13 +29,6 @@
 				controller: 'MessagesController',
         controllerAs: 'vm'
 			})
-      .state('messages.show', {
-				url: '/:id',
-				templateUrl: 'messages/messages-show.html',
-				resolve: {
-          findMessage: findMessage
-				}
-			})
       .state('messages.index', {
       	url: '',
       	templateUrl: 'messages/messages-index.html',
@@ -50,6 +43,13 @@
       		contactsPrep: contactsPrep
       	}
       })
+      .state('messages.show', {
+				url: '/:id',
+				templateUrl: 'messages/messages-show.html',
+				resolve: {
+          findMessage: findMessage
+				}
+			})
 		$urlRouterProvider.otherwise('contacts')
 	}
 

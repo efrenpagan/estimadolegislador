@@ -19,14 +19,19 @@
     return service
 
     function sendMessage() {
-      messageStatus.open(service.message)
+      service.message.status = 'pending'
+      var modal = messageStatus.open(service.message)
       var success = function(resp) {
         return monitorStatus(resp.data.task_key).then(function (message) {
           angular.copy(message, service.message)
           return message
         })
       }
-      var error = function(err) { console.error(err) }
+      var error = function(err) {
+        setError(err.data.errors)
+        $timeout(modal.close, 3000)
+        console.error(err)
+      }
       return $http.post('/api/messages.json', { message: service.message }).then(success, error)
     }
 
@@ -69,6 +74,14 @@
       }
       var error = function(err) { console.log(err) }
       return $http.get('/api/messages/'+id+'.json').then(success, error)
+    }
+
+    function setError(errors) {
+      angular.forEach(errors, function(value, key) {
+        errors[key] = value.toString()
+      })
+      service.message.status = 'error'
+      service.message.errors = errors
     }
 	}
 })()
