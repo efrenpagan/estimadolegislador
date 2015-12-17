@@ -4,8 +4,9 @@ class Contact < ActiveRecord::Base
 	include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-	has_many :recipients, dependent: :destroy
+	has_many :recipients
 	has_many :messages, through: :recipients
+	has_many :message_events, through: :recipients
 
 	has_attached_file :image
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/

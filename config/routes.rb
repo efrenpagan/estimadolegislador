@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     	end
     end
     resources :workers, only: [:show]
+    resources :message_events, only: [:create]
   end
 
   root 'angular#root'

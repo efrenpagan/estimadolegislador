@@ -1,6 +1,7 @@
 class Message < ActiveRecord::Base
 	has_many :recipients
 	has_many :contacts, through: :recipients
+	has_many :message_events, through: :recipients
 
 	after_create :set_short_url
 	after_create :set_text_version
