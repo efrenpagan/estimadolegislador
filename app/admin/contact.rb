@@ -25,9 +25,10 @@ ActiveAdmin.register Contact do
     end
   end
 
-  # filter :email
-  # filter :position_type
-  # filter :twitter_handle
+  filter :name
+  filter :email
+  filter :position_type
+  filter :twitter_handle
 
   form do |f|
     f.inputs "Contact Details", :multipart => true do
