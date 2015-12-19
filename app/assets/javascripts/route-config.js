@@ -1,12 +1,12 @@
 (function() {
-  'use strict'
+  'use strict';
 
 	angular
     .module('atentamente')
-    .config(config)
+    .config(config);
 
 	function config($stateProvider, $urlRouterProvider, $locationProvider) {
-		$locationProvider.html5Mode(true)
+		$locationProvider.html5Mode(true);
 		$stateProvider
 			.state('contacts', {
 				abstract: true,
@@ -49,22 +49,22 @@
 				resolve: {
           findMessage: findMessage
 				}
-			})
+			});
 		$urlRouterProvider.otherwise('contacts')
 	}
 
   function contactsPrep(contacts) {
-    return contacts.fetch()
+    return contacts.fetch();
   }
 
   function messagesPrep(messages) {
-    return messages.fetch()
+    return messages.fetch();
   }
 
   function findMessage($stateParams, messages) {
-    return messages.find($stateParams.id)
+    return messages.find($stateParams.id);
   }
-})()
+})();
 
 // // Change angularMoment locale to spanish
 // app.run(function(amMoment) {

@@ -8,6 +8,7 @@ class CreateMessages < ActiveRecord::Migration
       t.text :body_text
       t.boolean :is_public
       t.string :short_url
+      t.string :status, default: "pending"
 
       t.timestamps
     end
