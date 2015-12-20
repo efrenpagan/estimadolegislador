@@ -23,8 +23,16 @@
 # Ignore application configuration
 /config/application.yml
 
-# Ignore everything in public directory, except images directory
+# Ignore all dynamic generated content from public directory
 /public/*
-!public/images
+!/public/404.html
+!/public/422.html
+!/public/500.html
+!/public/favicon.ico
+!/public/robots.txt
+
+/public/assets/*
+!/public/assets/images
+
 
 /keys
