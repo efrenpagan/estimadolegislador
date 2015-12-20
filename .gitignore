@@ -32,7 +32,6 @@
 !/public/robots.txt
 
 /public/assets/*
-!/public/assets/images
-
+!public/assets/images
 
 /keys
