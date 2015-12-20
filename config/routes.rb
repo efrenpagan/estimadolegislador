@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     resources :message_events, only: [:create]
   end
 
-  get 'contacts', to: 'angular#root'
+  resources :contacts, only: [:show], to: 'angular#root'
+  resources :messages, only: [:index, :show, :new], to: 'angular#root'
   root 'angular#root'
-  # get "*path" => "angular#root"
-
 end
