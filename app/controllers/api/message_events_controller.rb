@@ -9,6 +9,6 @@ class Api::MessageEventsController < ApplicationController
   private
 
     def message_event_params
-      params.permit(:recipient_id, :event)
+      params.permit(_json: [:recipient_id, :event])[:_json]
     end
 end
