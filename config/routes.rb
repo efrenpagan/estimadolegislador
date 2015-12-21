@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  # Crazy stuff from active admin, see https://github.com/activeadmin/activeadmin/issues/783
+  begin
+    ActiveAdmin.routes(self)
+  rescue Exception => e
+    puts "ActiveAdmin: #{e.class}: #{e}"
+  end
+
   namespace :api do
     resources :messages
     resources :contacts do

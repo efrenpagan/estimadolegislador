@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20151217022008) do
     t.text     "body_text"
     t.boolean  "is_public"
     t.string   "short_url"
+    t.string   "status",     default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",     default: "pending"
   end
 
   create_table "recipients", force: :cascade do |t|
