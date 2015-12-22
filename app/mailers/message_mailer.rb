@@ -10,7 +10,7 @@ class MessageMailer < ActionMailer::Base
   def individual_message(message, contact)
     @contact = contact
     @message = message
-    headers['X-SMTPAPI'] = { unique_args: { recipient_id: @message.recipients.where(contact_id: contact.id).take! } }.to_json 
+    headers['X-SMTPAPI'] = { unique_args: { recipient_id: @message.recipients.where(contact_id: contact.id).take!.id } }.to_json 
     mail(to: @contact.email, subject: @message.subject)
   end
 end
