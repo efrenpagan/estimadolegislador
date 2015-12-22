@@ -30,5 +30,5 @@ test:
 production:
   <<: *default
   database: atentamente_production
-  # username: <%= ENV["DB_USERNAME"] %>
-  # password: <%= ENV["DB_PASSWORD"] %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
