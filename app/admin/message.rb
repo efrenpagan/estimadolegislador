@@ -4,6 +4,8 @@ ActiveAdmin.register Message do
   filter :subject
   filter :from_email
   filter :is_public
+  filter :created_at, as: :date_range
+  filter :contacts, :collection => proc { Contact.all }, :as => :select
 
   index do
     selectable_column
