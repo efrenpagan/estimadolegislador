@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
+	acts_as_paranoid
+
 	has_many :recipients
 	has_many :contacts, through: :recipients
 	has_many :message_events, through: :recipients
