@@ -18,11 +18,11 @@ class Message < ActiveRecord::Base
 	private
 
 	def set_short_url
-		update_attribute(:short_url, MessageLogic.generate_short_url(self.id))
+		update_attribute(:short_url, MessageLogic.generate_short_url(self))
 	end
 
 	def set_text_version
-		update_attribute(:body_text, MessageLogic.html_to_text(self.body_html))
+		update_attribute(:body_text, MessageLogic.html_to_text(self))
 	end
 
 end

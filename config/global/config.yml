@@ -12,6 +12,13 @@ test:
     enabled: false
   domain: 127.0.0.1
 
+staging:
+  aws_s3:
+    enabled: true
+  sendgrid:
+    enabled: true
+  domain: staging.atentamente.org
+
 production:
   aws_s3:
     enabled: true

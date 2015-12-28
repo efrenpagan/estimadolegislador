@@ -10,7 +10,7 @@
 		$stateProvider
 			.state('contacts', {
 				abstract: true,
-				url: '/contacts',
+				url: '/',
 				template: '<ui-view/>',
 				controller: 'ContactsController',
         controllerAs: 'vm'
@@ -50,7 +50,7 @@
           findMessage: findMessage
 				}
 			});
-		$urlRouterProvider.otherwise('contacts')
+		$urlRouterProvider.otherwise('/')
 	}
 
   function contactsPrep(contacts) {
