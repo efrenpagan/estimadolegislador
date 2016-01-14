@@ -7,6 +7,7 @@ module ApplicationHelper
     tags << tag('meta', :property => 'og:description', :content => description)
     tags << tag('meta', :property => 'og:image', :content => image)
     tags << tag('meta', :property => 'og:site_name', :content => title)
+    tags << tag('meta', :property => 'fb:admins', :content => ENV['facebook_id'])
     tags.join.html_safe
   end
 
