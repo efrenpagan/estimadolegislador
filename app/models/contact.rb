@@ -31,6 +31,12 @@ class Contact < ActiveRecord::Base
 		position_type == 'mayor'
 	end
 
+	def as_indexed_json(options = {})
+	  self.as_json({
+	    only: [:name, :position_description, :internal_position]
+	  })
+	end
+
 	settings index: {
 		number_of_shards: 1,
 		analysis: {
