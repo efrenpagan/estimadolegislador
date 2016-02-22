@@ -1,13 +1,13 @@
 class MailerWorker
   include Sidekiq::Worker
 
-  def self.create(message_params)
+  def self.create(message)
   	task_key = "create_message:#{Time.now.to_i}:#{SecureRandom.hex(6)}"
   	Sidekiq.redis do |conn|
       conn.set(task_key, { status: 'pending' }.to_json)
       conn.expire(task_key, 1.day)
     end
-  	perform_async(message_params, task_key)
+  	perform_async(message.id, task_key)
   	return task_key
   end
 
@@ -18,10 +18,10 @@ class MailerWorker
     end
   end
 
-  def perform(message_params, task_key)
+  def perform(message_id, task_key)
     begin
       result = {}
-      message = Message.create(message_params)
+      message = Message.find(message_id)
       ActiveRecord::Base.transaction do
         MessageMailer.send_message(message)
         message.update(status: 'success')

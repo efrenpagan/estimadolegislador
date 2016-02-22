@@ -1,8 +1,8 @@
 module MessageLogic
   extend self
 
-  def send_message(message_params)
-    MailerWorker.create(message_params)
+  def send_message(message)
+    MailerWorker.create(message)
   end
 
   def generate_short_url(message)

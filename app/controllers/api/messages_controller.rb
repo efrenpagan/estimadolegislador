@@ -18,7 +18,7 @@ class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
-      task_key = MessageLogic.send_message(message_params)
+      task_key = MessageLogic.send_message(@message)
       render json: { task_key: task_key, message: @message }, status: :ok
     else
       render json: { errors: @message.errors, message: @message } , status: :unprocessable_entity
