@@ -20,10 +20,7 @@
 
     vm.sendMessage = function() {
       vm.message.contact_ids = contacts.recipient_ids
-      messages.sendMessage().then(function (message) {
-        console.log(message)
-        console.log(vm.message)
-      })
+      messages.sendMessage()
 		}
 	}
 })()

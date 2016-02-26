@@ -17,7 +17,7 @@
 
     function linker(scope, element, attrs) {
       scope.getTemplateUrl = function() {
-        switch(scope.message.status) {
+        switch(scope.message_service.message.status) {
           case 'success':
             return 'messages/messages-status/messages-status-success.html'
           case 'error':
@@ -26,7 +26,7 @@
             return 'messages/messages-status/messages-status-pending.html'
          }
       }
-      scope.$watch('message.status', function (){
+      scope.$watch('message_service.message.status', function (){
         element.html('<div><ng-include src="getTemplateUrl()"/></div>')
         $compile(element.contents())(scope)
       })

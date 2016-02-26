@@ -12,12 +12,12 @@
 
     return service
 
-    function open(message) {
+    function open(message_service) {
       return $uibModal.open({
         animation: true,
         template: '<message-status/>',
         controller: function($scope, $uibModalInstance) {
-          $scope.message = message
+          $scope.message_service = message_service
           $scope.close = function() {
             $uibModalInstance.close()
           }

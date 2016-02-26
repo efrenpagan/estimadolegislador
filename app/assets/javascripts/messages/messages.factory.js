@@ -5,7 +5,7 @@
 	  .module('atentamente')
 	  .factory('messages', messages)
 
-	function messages($http, $q, $timeout, messageStatus) {
+	function messages($http, $q, $timeout, $location, messageStatus) {
     var service = {
 			message: {
         status: 'pending'
@@ -13,14 +13,15 @@
       messages: [],
       fetch: fetch,
       find: find,
-			sendMessage: sendMessage
+			sendMessage: sendMessage,
+      shareFacebook: shareFacebook
     }
 
     return service
 
     function sendMessage() {
       service.message.status = 'pending'
-      var modal = messageStatus.open(service.message)
+      var modal = messageStatus.open(service)
       var success = function(resp) {
         return monitorStatus(resp.data.task_key).then(function (message) {
           angular.copy(message, service.message)
@@ -68,7 +69,6 @@
 
     function find(id) {
       var success = function(resp) {
-        console.log(resp.data)
         angular.copy(resp.data, service.message)
         return resp.data
       }
@@ -82,6 +82,17 @@
       })
       service.message.status = 'error'
       service.message.errors = errors
+    }
+
+    function shareFacebook() {
+      FB.ui({
+        method: 'share',
+        href: messageUrl()
+      }, function(response){})
+    }
+
+    function messageUrl() {
+      return $location.protocol()+'://'+$location.host()+'/messages/'+service.message.id
     }
 	}
 })()
