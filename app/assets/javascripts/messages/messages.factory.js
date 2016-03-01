@@ -14,7 +14,8 @@
       fetch: fetch,
       find: find,
 			sendMessage: sendMessage,
-      shareFacebook: shareFacebook
+      shareFacebook: shareFacebook,
+      shareTwitter: shareTwitter
     }
 
     return service
@@ -91,8 +92,29 @@
       }, function(response){})
     }
 
+    function shareTwitter() {
+      var share = {
+        url: "https://twitter.com/intent/tweet",
+        params: [
+          { text: encodeURIComponent("Envié este mensaje a través de atentamente: ") + service.message.short_url },
+          { original_referer: messageUrl() },
+          { via: "atentamente_org" }
+        ]
+      }
+      window.open(share['url'] + urlParams(share['params']), "Compartir en Twitter", "width=350,height=250")
+    }
+
     function messageUrl() {
       return $location.protocol()+'://'+$location.host()+'/messages/'+service.message.id
+    }
+
+    function urlParams(params) {
+      var result = []
+      params.forEach(function(param) {
+        var key = Object.keys(param)[0]
+        result.push(key + "=" + param[key])
+      })
+      return "?" + result.join('&')
     }
 	}
 })()
