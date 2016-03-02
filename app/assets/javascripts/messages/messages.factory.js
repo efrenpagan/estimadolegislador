@@ -5,7 +5,7 @@
 	  .module('atentamente')
 	  .factory('messages', messages)
 
-	function messages($http, $q, $timeout, $location, messageStatus) {
+	function messages($http, $q, $timeout, $location, $state, messageStatus) {
     var service = {
 			message: {
         status: 'pending'
@@ -34,7 +34,9 @@
         $timeout(modal.close, 3000)
         console.error(err)
       }
-      return $http.post('/api/messages.json', { message: service.message }).then(success, error)
+      return $http.post('/api/messages.json', { message: service.message }).then(success, error).then(function(message) {
+        $state.go('messages.show', { id: message.id })
+      })
     }
 
     function monitorStatus(task_key) {
