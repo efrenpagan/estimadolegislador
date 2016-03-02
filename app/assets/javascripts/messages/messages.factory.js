@@ -13,6 +13,7 @@
       messages: [],
       fetch: fetch,
       find: find,
+      reset: reset,
 			sendMessage: sendMessage,
       shareFacebook: shareFacebook,
       shareTwitter: shareTwitter
@@ -77,6 +78,10 @@
       }
       var error = function(err) { console.log(err) }
       return $http.get('/api/messages/'+id+'.json').then(success, error)
+    }
+
+    function reset() {
+      angular.copy({ status: 'pending' }, service.message)
     }
 
     function setError(errors) {

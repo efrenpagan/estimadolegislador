@@ -40,7 +40,8 @@
       	url: '/new',
       	templateUrl: 'messages/messages-new.html',
       	resolve: {
-      		contactsPrep: contactsPrep
+          contactsPrep: contactsPrep,
+      		newMessagePrep: newMessagePrep
       	}
       })
       .state('messages.show', {
@@ -54,15 +55,19 @@
 	}
 
   function contactsPrep(contacts) {
-    return contacts.fetch();
+    return contacts.fetch()
   }
 
   function messagesPrep(messages) {
-    return messages.fetch();
+    return messages.fetch()
+  }
+
+  function newMessagePrep(messages) {
+    return messages.reset()
   }
 
   function findMessage($stateParams, messages) {
-    return messages.find($stateParams.id);
+    return messages.find($stateParams.id)
   }
 })();
 
