@@ -7,6 +7,7 @@
 
   function MessagesController(messages, contacts) {
     var vm = this
+    vm.message_service = messages
     vm.message = messages.message
     vm.messages = messages.messages
     vm.contacts = contacts.contacts

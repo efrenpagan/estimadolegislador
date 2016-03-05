@@ -1,3 +1,4 @@
+// Filter contacts that have been included in a new message
 (function() {
   'use strict'
 
