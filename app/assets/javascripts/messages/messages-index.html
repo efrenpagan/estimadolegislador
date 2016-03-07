@@ -12,7 +12,7 @@
               <td><span am-time-ago="message.created_at"></span></td>
             </tr>
             <tr>
-              <td>{{ message.body_text }}</td>
+              <td>{{ message.body_text | characters:500 }}</td>
             </tr>
             <tr>
               <td>

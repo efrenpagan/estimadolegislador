@@ -7,5 +7,6 @@ angular
     'ui.bootstrap',
     'ui.tinymce',
     'ngStorage',
-    'ngAnimate'
+    'ngAnimate',
+    'truncate'
   ]);

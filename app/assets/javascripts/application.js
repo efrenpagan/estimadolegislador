@@ -13,6 +13,7 @@
 //= require angular-sanitize
 //= require tinymce-dist/tinymce
 //= require angular-ui-tinymce/src/tinymce
+//= require angular-truncate
 //= require atentamente
 
 //= require_tree .
