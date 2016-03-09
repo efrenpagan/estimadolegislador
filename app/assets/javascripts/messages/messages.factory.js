@@ -16,7 +16,8 @@
       reset: reset,
 			sendMessage: sendMessage,
       shareFacebook: shareFacebook,
-      shareTwitter: shareTwitter
+      shareTwitter: shareTwitter,
+      search: search
     }
 
     return service
@@ -123,5 +124,20 @@
       })
       return "?" + result.join('&')
     }
+
+    function search(query) {
+      var success = function(resp) {
+        angular.copy(resp.data, service.messages)
+        return resp.data
+      }
+      var error = function(err) { console.log(err) }
+      return $http.get(
+        '/api/messages/search.json', {
+          params: {
+            query: query,
+          }
+        }).then(success, error)
+    }
+
 	}
 })()

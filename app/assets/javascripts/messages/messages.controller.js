@@ -23,5 +23,9 @@
       vm.message.contact_ids = contacts.recipient_ids
       messages.sendMessage()
 		}
+
+    vm.search = function(query) {
+      return messages.search(query)
+		}
 	}
 })()

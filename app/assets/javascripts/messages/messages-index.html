@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-md-9 col-md-offset-1">
     <h3>Mensajes</h3>
+    <div class="form-group">
+      <input type="text" ng-model="vm.searchBox" ng-change="vm.search(vm.searchBox)" placeholder="Buscar Mensajes" class="form-control">
+    </div>
   	<table class="table table-hover">
   		<tr ng-repeat="message in vm.messages">
   			<td>

@@ -45,6 +45,11 @@ class Api::MessagesController < ApplicationController
     end
   end
 
+  def search
+    @messages = MessageLogic.search(params['query'])
+    render :index, status: :ok
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message

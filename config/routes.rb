@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :messages
+    resources :messages do
+      collection do
+    		get 'search'
+    	end
+    end
     resources :contacts do
     	collection do
     		get 'search'
