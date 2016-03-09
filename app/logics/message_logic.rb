@@ -22,6 +22,20 @@ module MessageLogic
     }
   end
 
+  def search(query)
+    params = {
+      query: {
+        filtered: {
+          query: {
+            query_string: { query: "*#{query}*" }
+          }
+        }
+      }
+    }
+
+    Message.__elasticsearch__.search(params).records
+  end
+
   private
 
   def url(message)
