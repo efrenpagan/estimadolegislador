@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     resources :message_events, only: [:create]
   end
 
-  resources :messages, only: [:index, :new], to: 'angular#root'
-  resources :messages, only: [:show]
+  resources :messages, only: [:index, :new, :show]
   root 'angular#root'
 end
