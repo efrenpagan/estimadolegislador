@@ -1,7 +1,15 @@
-module Contact::FilterLogic
+module ContactLogic
 	extend self
 
-	def search(query, filtered_ids)
+	def get_by_ids(ids, included)
+		if included
+			Contact.find(ids).index_by(&:id).slice(*ids).values
+		else #excluded ids
+			Contact.where.not(id: ids)
+		end
+	end
+
+	def search(query, excluded_ids)
 		params = {
 			query: {
 		    filtered: {
@@ -12,7 +20,7 @@ module Contact::FilterLogic
 		      	not: {
 		      		filter:{
 		      			ids: {
-		      				values: JSON.parse(filtered_ids)
+		      				values: JSON.parse(excluded_ids)
 		      			}
 		      		}
 		      	}

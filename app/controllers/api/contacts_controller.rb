@@ -3,12 +3,7 @@ class Api::ContactsController < ApplicationController
 
 	def index
     if params['ids'].present?
-			ids = JSON.parse(params['ids'])
-			if params['include_ids'] == "true" # Recipients
-				@contacts = Contact.find(ids).index_by(&:id).slice(*ids).values
-			else # Non Recipients
-				@contacts = Contact.where.not(id: ids)
-			end
+			@contacts = ContactLogic.get_by_ids(JSON.parse(params['ids']), params['include_ids'] == "true" ? true : false)
     else
       @contacts = Contact.all
     end
@@ -44,7 +39,7 @@ class Api::ContactsController < ApplicationController
   end
 
   def search
-    @contacts = Contact::FilterLogic.search(params['query'], params['filtered_ids'])
+    @contacts = ContactLogic.search(params['query'], params['filtered_ids'])
     render :index, status: :ok
   end
 
