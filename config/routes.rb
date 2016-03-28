@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, ActiveAdmin::Devise.config
-  # Crazy stuff from active admin, see https://github.com/activeadmin/activeadmin/issues/783
-  begin
-    ActiveAdmin.routes(self)
-  rescue Exception => e
-    puts "ActiveAdmin: #{e.class}: #{e}"
-  end
+  devise_for :users
+  ActiveAdmin.routes(self)
 
   namespace :api do
     resources :messages do
@@ -24,5 +19,9 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:index, :new, :show]
+
+  get '/register',  to: 'angular#root', as: 'register'
+  get '/login',     to: 'angular#root', as: 'login'
+
   root 'angular#root'
 end

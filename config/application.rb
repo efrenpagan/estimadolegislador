@@ -38,5 +38,11 @@ module Atentamente
       }
     end
 
+    config.action_mailer.default_url_options = { :host => Global.config.domain }
+
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
+
   end
 end

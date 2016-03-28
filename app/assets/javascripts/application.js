@@ -14,6 +14,7 @@
 //= require tinymce-dist/tinymce
 //= require angular-ui-tinymce/src/tinymce
 //= require angular-truncate
+//= require angular-devise
 //= require atentamente
 
 //= require_tree .

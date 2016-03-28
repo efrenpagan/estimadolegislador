@@ -8,5 +8,6 @@ angular
     'ui.tinymce',
     'ngStorage',
     'ngAnimate',
-    'truncate'
+    'truncate',
+    'Devise'
   ]);

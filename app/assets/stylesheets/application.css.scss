@@ -89,6 +89,28 @@
   text-align: right;
 }
 
-.message-error{
+.message-error, .error-label{
   color: red;
+}
+
+.modal-content{
+  padding: 25px;
+}
+
+.modal-title{
+  text-align: center;
+}
+
+.modal-form{
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
+}
+
+.modal-form > .form-group > input{
+  width: 100%;
+}
+
+.modal-form > .action-buttons{
+  text-align: right;
 }

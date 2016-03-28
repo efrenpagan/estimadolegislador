@@ -60,5 +60,3 @@ Contact.__elasticsearch__.client.indices.delete index: Contact.index_name rescue
 Contact.__elasticsearch__.client.indices.create \
   index: Contact.index_name,
   body: { settings: Contact.settings.to_hash, mappings: Contact.mappings.to_hash }
-
-Contact.__elasticsearch__.import
