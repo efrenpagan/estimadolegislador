@@ -50,7 +50,19 @@
 				resolve: {
           findMessage: findMessage
 				}
-			});
+			})
+      .state('login', {
+        url: '/login',
+        templateUrl: 'auth/auth-login.html',
+        controller: 'AuthController',
+        controllerAs: 'vm'
+       })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'auth/auth-register.html',
+        controller: 'AuthController',
+        controllerAs: 'vm'
+      });
 		$urlRouterProvider.otherwise('/')
 	}
 

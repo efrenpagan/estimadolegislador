@@ -93,10 +93,15 @@
   color: red;
 }
 
+.navbar-toggle{
+  border-color: #5B5A5A;
+  background-color: black;
+}
+
 @media only screen and (min-width: 1200px) {
   
   .container{
-    width:  90%;
+    width:  90% ;
   }
 
 }

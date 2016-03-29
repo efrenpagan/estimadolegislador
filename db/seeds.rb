@@ -80,4 +80,8 @@
 # 	Politician.create(name: name, position: 'senator', role: role, description: 'Senador', political_party: political_party, email: email)
 #
 # end
-User.create!(email: 'admin@atentamente.org', password: 'password', password_confirmation: 'password')
+User.find_or_create_by(email: 'admin@atentamente.org') do |user|
+  user.password = 'password'
+  user.password_confirmation = 'password'
+  user.confirmed_at = Time.now
+end

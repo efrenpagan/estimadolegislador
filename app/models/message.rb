@@ -60,5 +60,3 @@ Message.__elasticsearch__.client.indices.delete index: Message.index_name rescue
 Message.__elasticsearch__.client.indices.create \
   index: Message.index_name,
   body: { settings: Message.settings.to_hash, mappings: Message.mappings.to_hash }
-
-Message.__elasticsearch__.import
