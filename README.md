@@ -4,12 +4,32 @@
 
 ### Dependencies
 
-* [Bower](http://bower.io/)
-* [Redis](http://redis.io/)
-* [Elasticsearch](https://www.elastic.co/)
-* [PostgreSQL](http://www.postgresql.org/)
+* [node.js](https://nodejs.org/en/)
 
-After installing the dependencies, start Elasticsearch and Redis:
+* [Bower](http://bower.io/)
+
+* [Redis](http://redis.io/)
+    * [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-redis)
+
+    * OSX
+        * [Download Redis](http://redis.io/download)
+        * [Guide to install Redis](http://jasdeep.ca/2012/05/installing-redis-on-mac-os-x/)
+* [OpenJDK](http://openjdk.java.net/install/)
+
+* [Elasticsearch](https://www.elastic.co/)
+
+* [PostgreSQL](http://www.postgresql.org/)
+    * **After installing postgres**
+        * `sudo su postgres`
+        * `createuser --interactive username `
+        * Shall the new role be a superuser? (y/n) `y`
+        * `exit`
+
+After installing the dependencies, start Redis and Elasticsearch
+
+    * sudo service redis_port
+
+    * sudo service elasticsearch
 
 ### App setup
 
