@@ -1,3 +1,7 @@
+<p  style="text-align: center">
+<img src="/public/assets/images/site/att_logo.png" width="80">
+</p>
+
 #atentamente.org
 
 ## Development setup
@@ -27,11 +31,10 @@
 
 After installing the dependencies, start Redis and Elasticsearch
 
-    * sudo service redis_port
+* `sudo service redis_**port** start`
+* `sudo service elasticsearch start`
 
-    * sudo service elasticsearch
-
-### App setup
+### App Setup
 
 * `bundle install`
 * `bower install`
