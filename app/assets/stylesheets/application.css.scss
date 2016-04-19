@@ -98,8 +98,12 @@
   background-color: black;
 }
 
+.modal-padding{
+    padding: 20px 20px 20px 50px;
+}
+
 @media only screen and (min-width: 1200px) {
-  
+
   .container{
     width:  90% ;
   }
