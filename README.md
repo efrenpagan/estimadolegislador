@@ -29,10 +29,10 @@
         * Shall the new role be a superuser? (y/n) `y`
         * `exit`
 
-After installing the dependencies, start Redis and Elasticsearch
+* After installing the dependencies, start Redis and Elasticsearch
 
-* `sudo service redis_**port** start`
-* `sudo service elasticsearch start`
+    * `sudo service redis_**port** start`
+    * `sudo service elasticsearch start`
 
 ### App Setup
 
