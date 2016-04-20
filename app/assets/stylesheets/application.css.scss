@@ -1,0 +1,111 @@
+/*
+ *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap-sidebar
+ *= require font-awesome/css/font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+ @import url(http://fonts.googleapis.com/css?family=Nothing+You+Could+Do);
+ @import url(http://fonts.googleapis.com/css?family=Raleway:500);
+
+ @font-face {
+   font-family: 'FontAwesome';
+   src: font-url('font-awesome/fonts/fontawesome-webfont.eot?v=4.0.3');
+   src: font-url('font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'),
+   font-url('font-awesome/fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'),
+   font-url('font-awesome/fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'),
+   font-url('font-awesome/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+   font-weight: normal;
+   font-style: normal;
+ }
+
+ body{
+ 	font-family: 'Raleway', sans-serif;
+ }
+
+ nav{
+ 	background-color: black;
+  font-size: 16px;
+ }
+
+ .navbar-nav > li > a{
+   color: white;
+ }
+
+ .navbar-nav > li > a:hover, .navbar-nav > li > a:focus{
+   color: white;
+   background-color: transparent;
+ }
+
+ .sidebar{
+   padding-top: 20px;
+ }
+
+.container-fluid{
+	padding-top: 60px;
+}
+
+.filter-container{
+	width: 100%;
+}
+
+.sidebar-left{
+	border-right: 1px solid;
+}
+
+.img-contact{
+	width: 100%;
+	height: auto;
+}
+
+.img-recipient{
+	width: 75px;
+}
+
+.img-container{
+	width: 200px;
+}
+
+.search-subtitle{
+	font-size: 12px;
+}
+
+.message_text{
+  white-space: pre;
+}
+
+.compose-email-btn{
+  position: relative;
+  top: 15%;
+  transform: translateY(-15%);
+}
+
+.right{
+  float: right;
+}
+
+.pull-right{
+  text-align: right;
+}
+
+.message-error{
+  color: red;
+}
+
+.navbar-toggle{
+  border-color: #5B5A5A;
+  background-color: black;
+}
+
+.modal-padding{
+    padding: 20px 20px 20px 50px;
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .container{
+    width:  90% ;
+  }
+
+}

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+    <h2>{{vm.message.subject}}</h2>
+  </div>
+  <div class="col-md-3">
+    <span>{{vm.message.created_at | amDateFormat:'MMMM D YYYY, h:mm:ss a'}}</span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+    Dirigido a: {{vm.message.contacts | commaSeparateFilter: 'name'}}
+  </div>
+  <div class="col-md-3">
+    <a href="" ng-click="vm.message_service.shareFacebook()">Compartir en Facebook</a>
+    <a href="" ng-click="vm.message_service.shareTwitter()">Compartir en Twitter</a>
+  </div>
+</div>
+</br>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1" ng-bind-html="vm.message.body_html"></div>
+</div>

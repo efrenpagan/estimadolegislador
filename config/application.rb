@@ -1,0 +1,48 @@
+require File.expand_path('../boot', __FILE__)
+
+require 'rails/all'
+
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
+
+module Atentamente
+  class Application < Rails::Application
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration should go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded.
+
+    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+    # config.time_zone = 'Central Time (US & Canada)'
+
+    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :en
+    config.assets.paths << Rails.root.join('app', 'assets', 'bower_components')
+
+    Global.configure do |config|
+      config.environment = Rails.env.to_s
+      config.config_directory = Rails.root.join('config/global').to_s
+    end
+
+    if Global.config.aws_s3.enabled
+      config.paperclip_defaults = {
+        :storage => :s3,
+        :s3_credentials => {
+          :bucket => ENV['s3_bucket'],
+          :access_key_id => ENV['s3_access_key_id'],
+          :secret_access_key => ENV['s3_secret_access_key'],
+          :s3_host_name => ENV['s3_host_name']
+        }
+      }
+    end
+
+    config.action_mailer.default_url_options = { :host => Global.config.domain }
+
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
+
+  end
+end

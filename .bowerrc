@@ -1,0 +1,6 @@
+{
+  "directory":"vendor/assets/bower_components",
+  "scripts": {
+    "postinstall": "./.bower-postinstall.sh"
+  }
+}

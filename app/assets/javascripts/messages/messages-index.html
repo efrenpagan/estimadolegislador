@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-9 col-md-offset-1">
+    <h3>Mensajes</h3>
+    <div class="form-group">
+      <input type="text" ng-model="vm.searchBox" ng-change="vm.search(vm.searchBox)" placeholder="Buscar Mensajes" class="form-control">
+    </div>
+  	<table class="table table-hover">
+  		<tr ng-repeat="message in vm.messages">
+  			<td>
+          <div class="row">
+            <div class="col-xs-8">
+              <h3><a ui-sref="messages.show({ id: message.id })">{{message.subject}}</a></h3>
+            </div>
+            <div class="col-xs-4 pull-right">
+              <span am-time-ago="message.created_at"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              {{ message.body_text | characters:500 }}
+            </div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-xs-12">
+              <h5>Dirigido a: <data-recipient-names collection="message.contacts"></h5>
+            </div>
+          </div>
+  			</td>
+  		</tr>
+		</table>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_name: MyString
+  from_email: MyString
+  subject: MyString
+  message: MyString
+  public: false
+  short_url: MyString
+  politician_id: 1
+
+two:
+  from_name: MyString
+  from_email: MyString
+  subject: MyString
+  message: MyString
+  public: false
+  short_url: MyString
+  politician_id: 1
